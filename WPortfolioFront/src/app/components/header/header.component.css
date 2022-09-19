@@ -1,0 +1,21 @@
+#AreaSuperior {
+    color:white;
+    background-color: #4169E1;
+    height: 72px;
+    margin-top: 0px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+#LogoArgentinaPrograma {
+    height: 54px;
+}
+
+#SeccionRedes img {
+    float: right;
+    margin-top: 6px;
+    margin-left: 6px;
+    height: 40px;
+}
