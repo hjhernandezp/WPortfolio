@@ -1,4 +1,8 @@
-#Banner {
-    height: 240px;
+#AreaBanner {
+    background-image: url("../../../assets/Banner006.jpg");
+    height: 150px;
     width: 100%;
+    color: #FFFFFF;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

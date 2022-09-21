@@ -1,0 +1,28 @@
+.row {
+    background-color: #B0C4DE;
+    min-height: 150px;
+    padding: 12px;
+}
+
+#FotoPerfil {
+    box-shadow: 3px 3px 3px #696969;
+    border-radius: 100%;
+}
+
+@media (min-width: 576px) {
+    #FotoPerfil {
+        width: 150px;
+        margin-top: -84px;
+    }
+}
+
+@media (max-width: 575px) {
+    #FotoPerfil {
+        width: 100px;
+        margin-top: -60px;
+    }
+    #SeccionAbout1, #SeccionAbout2 {
+        margin-top: 75px;
+        text-align: center;
+    }
+}

@@ -105,5 +105,8 @@
       }
     }
   },
-  "defaultProject": "WportfolioFront"
+  "defaultProject": "WportfolioFront",
+  "cli": {
+    "analytics": false
+  }
 }
