@@ -1,3 +1,9 @@
 #AreaPanel {
     background-color: #B0C4DE;
+    width: auto;
+    height: auto;
+}
+
+.tab-content {
+    margin-left: 6px;
 }

@@ -1,0 +1,13 @@
+#AreaFooter {    
+    background-color: #4169E1;
+    padding: 12px 24px 12px 24px;
+    height: auto;
+}
+
+footer {
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+}

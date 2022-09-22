@@ -1,28 +1,34 @@
-.row {
+#AreaAbout{
     background-color: #B0C4DE;
-    min-height: 150px;
+    height: auto;
+    width: auto;
+    height: auto;
     padding: 12px;
+}
+
+#SeccionAbout1 {
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+#SeccionAbout2 {
+    text-align: justify;
+    margin-bottom: 6px;
 }
 
 #FotoPerfil {
     box-shadow: 3px 3px 3px #696969;
     border-radius: 100%;
-}
-
-@media (min-width: 576px) {
-    #FotoPerfil {
-        width: 150px;
-        margin-top: -84px;
-    }
+    width: 90%;
+    margin-top: -50%;
 }
 
 @media (max-width: 575px) {
     #FotoPerfil {
         width: 100px;
-        margin-top: -60px;
+        margin-top: -12%;
     }
     #SeccionAbout1, #SeccionAbout2 {
-        margin-top: 75px;
         text-align: center;
     }
 }

@@ -1,8 +1,12 @@
 #AreaBanner {
     background-image: url("../../../assets/Banner006.jpg");
-    height: 150px;
-    width: 100%;
+    width: auto;
+    height: auto;
+}
+
+.container {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #FFFFFF;
     text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 1em;
 }
