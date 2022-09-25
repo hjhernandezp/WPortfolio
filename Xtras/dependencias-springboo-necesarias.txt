@@ -1,0 +1,10 @@
+SPRING BOOT
+
+Dependencias necesarias para el proyecto final de Argentina Programa
+
+Spring Web
+Spring Data JPA
+MySQL Driver
+Validation
+Spring Boot DevTools
+Lombok

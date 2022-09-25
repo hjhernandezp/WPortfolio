@@ -1,6 +1,5 @@
 #AreaAbout{
     background-color: #B0C4DE;
-    height: auto;
     width: auto;
     height: auto;
     padding: 12px;
@@ -21,6 +20,7 @@
     border-radius: 100%;
     width: 90%;
     margin-top: -50%;
+    margin-bottom: 12px;
 }
 
 @media (max-width: 575px) {
