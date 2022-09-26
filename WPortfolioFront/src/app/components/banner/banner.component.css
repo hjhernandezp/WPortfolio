@@ -1,7 +1,7 @@
 #AreaBanner {
     background-image: url("../../../assets/Banner006.jpg");
     width: auto;
-    min-height: 150px;
+    height: auto;
 }
 
 .container {
