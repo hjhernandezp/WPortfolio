@@ -43,7 +43,7 @@ public class UsuarioPrincipal implements UserDetails {
     }
 
     //@Override
-    public String netNombre() {
+    public String getNombre() {
         return nombre;
     }
 
@@ -76,4 +76,5 @@ public class UsuarioPrincipal implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

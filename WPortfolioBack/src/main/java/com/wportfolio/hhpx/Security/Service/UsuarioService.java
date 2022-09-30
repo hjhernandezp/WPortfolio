@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
-
 public class UsuarioService {
     @Autowired
     iUsuarioRepository iusuarioRepository;

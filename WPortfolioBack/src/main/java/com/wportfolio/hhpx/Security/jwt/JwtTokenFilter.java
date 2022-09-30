@@ -20,7 +20,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     @Autowired
     JwtProvider jwtProvider;
     @Autowired
-    UserDetailsImp userDetailsImp;
+    UserDetailsImp userDetailsServiceImp;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -28,7 +28,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             String token = getToken(request);
             if(token != null && jwtProvider.valdatToken(token)) {
                 String nombreUsuario = jwtProvider.getNombreUsuarioFromToken(token);
-                UserDetails userDetails = userDetailsImp.loadUserByUsername(nombreUsuario);
+                UserDetails userDetails = userDetailsServiceImp.loadUserByUsername(nombreUsuario);
                 UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(userDetails,
                         null, userDetails.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(auth);

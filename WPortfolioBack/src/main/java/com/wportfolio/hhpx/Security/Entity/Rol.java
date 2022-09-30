@@ -19,7 +19,7 @@ public class Rol {
     private RolNombre rolNombre;
     
     //Constructor
-
+    
     public Rol() {
     }
 
