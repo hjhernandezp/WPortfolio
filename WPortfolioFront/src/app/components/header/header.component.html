@@ -12,8 +12,11 @@
             <a href=""><img src="../../../assets/Logo_Instagram.png" alt=""></a>
             <a href=""><img src="../../../assets/Logo_Twitter.png" alt=""></a>
             <button type="button" 
-                    class="btn btn-outline-light" 
-                    (click)="login()">Ingresar</button>
+                class="btn btn-outline-light" (click)="login()" *ngIf="!isLogged">Ingresar
+            </button>
+            <button type="button" 
+                class="btn btn-outline-light" (click)="onLogOut()" *ngIf="isLogged">Salir
+            </button>
         </div>
     </div>
 </div>
