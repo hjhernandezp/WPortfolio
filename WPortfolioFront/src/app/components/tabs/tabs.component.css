@@ -1,11 +1,11 @@
 #AreaTabs {
+    width: auto;
+    height: auto;
     background-color: #B0C4DE;
     padding: 12px 24px 12px 24px;
     border-top-style: solid;
     border-top-width: 1px;
     border-top-color: black;
-    width: auto;
-    height: auto;
 }
 
 .nav-pills .nav-link.active,

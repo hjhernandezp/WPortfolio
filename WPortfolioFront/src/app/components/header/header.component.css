@@ -1,31 +1,37 @@
 #AreaHeader {
-    background-color: #4169E1;
     height: auto;
+    background-color: #4169E1;
 }
 
-.container {
-    display: flex;
-    justify-content: space-between;
+.row {
     align-items: center;
 }
 
-.logo img {
+#SeccionLogo {
+    text-align: left;
+}
+
+#SeccionLogo img {
     height: 54px;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+#SeccionBotones {
+    text-align: right;
+}
+
+#SeccionBotones img {
+    height: 40px;
     margin: 0.2em;
 }
 
-.redes img {
-    height: 36px;
+#SeccionBotones button {
     margin: 0.2em;
-}
-
-.redes button {
-    margin-left: 6px;
-    margin-right: 6px;
 }
 
 @media (max-width: 575px) {
-    .container {
+    .container-fluid {
         flex-direction: column;
     }
 }

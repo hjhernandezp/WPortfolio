@@ -1,10 +1,10 @@
 #AreaBanner {
-    background-image: url("../../../assets/Banner006.jpg");
     width: auto;
+    background-image: url("../../../assets/Banner006.jpg");
     min-height: 150px;
 }
 
-.container {
+#SeccionTitulo {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #FFFFFF;
     text-align: center;
