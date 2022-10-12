@@ -1,42 +1,30 @@
-package com.wportfolio.hhpx.Entity;
+package com.wportfolio.hhpx.Dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
-@Entity
-public class Experiencia {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class DExperiencia {
+    @NotBlank
     private String expEmpresa;
+    @NotBlank
     private String expLugar;
+    @NotBlank
     private String expCargo;
-
+    
     //CONSTRUCTOR
-    public Experiencia() {
+    public DExperiencia() {
     }
 
-    public Experiencia(
-            String expEmpresa,
-            String expCargo,
-            String expLugar
+    public DExperiencia(
+            String expEmpresa, 
+            String expLugar, 
+            String expCargo
     ) {
         this.expEmpresa = expEmpresa;
         this.expLugar = expLugar;
         this.expCargo = expCargo;
     }
     
-    //GETTERS & SETTERS
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    //GETTERES & SETTERS
     public String getExpEmpresa() {
         return expEmpresa;
     }

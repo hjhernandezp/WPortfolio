@@ -1,37 +1,31 @@
 <div>
-    <h3>Cursos Realizados</h3>
-    <ul>
-        <li>
-            Microenseñanza
-            (INCE, 1992). 80 horas.
-        </li>
-        <li>
-            Inducción Docente
-            (INCE, 1993). 60 horas.
-        </li>
-        <li>
-            Formación de Supervisores de Formación Profesional
-            (INCE, 1999). 250 horas.
-        </li>
-        <li>
-            Formación de Facilitadores del Método CEFE
-            (INCE/GTZ, 1999). 272 horas.
-        </li>
-        <li>
-            Componente Didáctico
-            (INCE, 2008). 60 horas.
-        </li>
-        <li>
-            Planificación Basada en Necesidades Sociales
-            (INCE, 2008). 30 horas.
-        </li>
-        <li>
-            Proyectos Sociopoductivos Basados en Necesidades Sociales
-            (INCE, 2008). 72 horas.
-        </li>
-        <li>
-            Inglés Básico
-            (INCE, 2012). 286 horas.
-        </li>
-    </ul>
+    <h3>
+        Cursos Realizados
+        <button type="button" class="btn btn-dark" routerLink="cursos-add" *ngIf="isLogged">
+            Añadir
+            <i class="bi bi-plus-circle"></i>
+        </button>
+    </h3>
+    <table class="table table-hover">
+        <tbody>
+            <tr *ngFor="let Cursos of cursos">
+                <td>{{Cursos.curNombre}}</td>
+                <td>{{Cursos.curInstituto}}</td>
+                <td>{{Cursos.curLugar}}</td>
+                <td>{{Cursos.curHoras}}</td>
+                <td *ngIf="isLogged">
+                    <button type="button" class="btn btn-success" routerLink="cursos-mod/{{Cursos.id}}">
+                        Editar
+                        <i class="bi bi-pencil-fill"></i>
+                    </button>
+                </td>
+                <td *ngIf="isLogged">
+                    <button type="button" class="btn btn-danger" (click)="deleteCursos(Cursos.id)">
+                        Borrar
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

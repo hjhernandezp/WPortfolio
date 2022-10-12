@@ -12,34 +12,34 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class SExperiencia {
     @Autowired
-    RExperiencia rExperiencia;
+    RExperiencia repExperiencia;
     
     public List<Experiencia> list() {
-        return rExperiencia.findAll();
+        return repExperiencia.findAll();
     }
     
     public Optional<Experiencia> getOne(int id) {
-        return rExperiencia.findById(id);
+        return repExperiencia.findById(id);
     }
-    
-    public Optional<Experiencia> getByNombreE(String nombreE) {
-        return rExperiencia.findByNombreE(nombreE);
+
+    public Optional<Experiencia> getByExpEmpresa(String expEmpresa) {
+        return repExperiencia.findByExpEmpresa(expEmpresa);
     }
-    
-    public void save(Experiencia expe) {
-        rExperiencia.save(expe);
+
+    public void save(Experiencia entExperiencia) {
+        repExperiencia.save(entExperiencia);
     }
     
     public void delete(int id) {
-        rExperiencia.deleteById(id);
+        repExperiencia.deleteById(id);
     }
-    
+
     public boolean existsById(int id) {
-        return rExperiencia.existsById(id);
+        return repExperiencia.existsById(id);
     }
-    
-    public boolean existsByNombreE(String nombreE) {
-        return rExperiencia.existsByNombreE(nombreE);
+
+    public boolean existsByExpEmpresa(String expEmpresa) {
+        return repExperiencia.existsByExpEmpresa(expEmpresa);
     }
-    
+
 }

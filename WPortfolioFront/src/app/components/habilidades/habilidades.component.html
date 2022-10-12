@@ -1,9 +1,15 @@
 <div class="row">
-    <h3>Hard & Soft Skills</h3>
-    <div class="text-center col-sm-3 col-md-3 col-lg-3">
+    <h3>
+        Habilidades
+        <button type="button" class="btn btn-dark" routerLink="habilidades-add" *ngIf="isLogged">
+            Añadir
+            <i class="bi bi-plus-circle"></i>
+        </button>
+    </h3>
+    <div class="text-center col-sm-3 col-md-3 col-lg-3" *ngFor="let Habilidades of habilidades">
         <circle-progress
-            [title]="'HTML5'"
-            [percent]="75"
+            [title]="(Habilidades.habNombre)"
+            [percent]="(Habilidades.habNivel)"
             [radius]="72"
             [titleFontSize]="'1.2em'"
             [showSubtitle]="false"
@@ -15,53 +21,19 @@
             [outerStrokeColor]="'#4169E1'"
             [innerStrokeColor]="'#708090'"
         ></circle-progress>
-    </div>
-    <div class="text-center col-sm-3 col-md-3 col-lg-3">
-        <circle-progress
-            [title]="'CSS3'"
-            [percent]="64"
-            [radius]="72"
-            [titleFontSize]="'1.2em'"
-            [showSubtitle]="false"
-            [showUnits]="false"
-            [outerStrokeWidth]="10"
-            [space]="-10"
-            [innerStrokeWidth]="10"
-            [outerStrokeWidth]="12"
-            [outerStrokeColor]="'#4169E1'"
-            [innerStrokeColor]="'#708090'"
-        ></circle-progress>
-    </div>
-    <div class="text-center col-sm-3 col-md-3 col-lg-3">
-        <circle-progress
-            [title]="'JavaScript'"
-            [percent]="75"
-            [radius]="72"
-            [titleFontSize]="'1.2em'"
-            [showSubtitle]="false"
-            [showUnits]="false"
-            [outerStrokeWidth]="10"
-            [space]="-10"
-            [innerStrokeWidth]="10"
-            [outerStrokeWidth]="12"
-            [outerStrokeColor]="'#4169E1'"
-            [innerStrokeColor]="'#708090'"
-        ></circle-progress>
-    </div>
-    <div class="text-center col-sm-3 col-md-3 col-lg-3">
-        <circle-progress
-            [title]="'Scrum'"
-            [percent]="75"
-            [radius]="72"
-            [titleFontSize]="'1.2em'"
-            [showSubtitle]="false"
-            [showUnits]="false"
-            [outerStrokeWidth]="10"
-            [space]="-10"
-            [innerStrokeWidth]="10"
-            [outerStrokeWidth]="12"
-            [outerStrokeColor]="'#4169E1'"
-            [innerStrokeColor]="'#708090'"
-        ></circle-progress>
+        <div content-align="center">
+        <td *ngIf="isLogged">
+            <button type="button" class="btn btn-success" routerLink="habilidades-mod/{{Habilidades.id}}">
+                Editar
+                <i class="bi bi-pencil-fill"></i>
+            </button>
+        </td>
+        <td *ngIf="isLogged">
+            <button type="button" class="btn btn-danger" (click)="deleteHabilidades(Habilidades.id)">
+                Borrar
+                <i class="bi bi-trash"></i>
+            </button>
+        </td>
+        </div>
     </div>
 </div>

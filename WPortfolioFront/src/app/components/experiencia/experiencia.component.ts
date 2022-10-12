@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Experiencia } from 'src/app/models/experiencia';
-import { SExperienciaService } from 'src/app/services/s-experiencia.service';
+import { ExperienciaService } from 'src/app/services/experiencia.service';
 import { TokenService } from 'src/app/services/token.service';
 
 @Component({
@@ -9,35 +9,41 @@ import { TokenService } from 'src/app/services/token.service';
   styleUrls: ['./experiencia.component.css']
 })
 export class ExperienciaComponent implements OnInit {
-  expe: Experiencia[] = [];
+  experiencia: Experiencia[] = [];
 
-  constructor(private sExperiencia: SExperienciaService, private tokenService: TokenService) { }
+  constructor(
+    private serExperiencia: ExperienciaService, 
+    private serToken: TokenService
+  ) { }
 
   isLogged = false;
   
   ngOnInit(): void {
-    this.cargarExperiencia();
-    if(this.tokenService.getToken()) {
+    this.loadExperiencia();
+    if(this.serToken.getToken()) {
       this.isLogged = true;
     } else {
       this.isLogged = false;
     }
   }
 
-  cargarExperiencia(): void {
-    this.sExperiencia.lista().subscribe(data => {this.expe = data});
+  loadExperiencia(): void {
+    this.serExperiencia.lista().subscribe(
+      data => {
+        this.experiencia = data
+      }
+    );
   }
 
-  delete(id?: number) {
-    if (id != undefined) {
-      this.sExperiencia.delete(id).subscribe(
+  deleteExperiencia(id?: number) {
+    if(id != undefined) {
+      this.serExperiencia.delete(id).subscribe(
         data => {
-          this.cargarExperiencia();
+          this.loadExperiencia()
         }, err => {
-          alert("No se pudo borrar");
+          alert("Error de sistema al borrar: Experiencia")
         }
-      )
+      );
     }
   }
-
 }

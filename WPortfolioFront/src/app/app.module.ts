@@ -14,13 +14,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { interceptorProvider } from './services/interceptor-service';
-import { ExperienciaComponent } from './components/experiencia/experiencia.component';
 import { EstudiosComponent } from './components/estudios/estudios.component';
-import { HabilidadesComponent } from './components/habilidades/habilidades.component';
+import { EstudiosAddComponent } from './components/estudios/estudios-add.component';
+import { EstudiosModComponent } from './components/estudios/estudios-mod.component';
+import { ExperienciaComponent } from './components/experiencia/experiencia.component';
+import { ExperienciaAddComponent } from './components/experiencia/experiencia-add.component';
+import { ExperienciaModComponent } from './components/experiencia/experiencia-mod.component';
 import { CursosComponent } from './components/cursos/cursos.component';
-import { CompetenciasComponent } from './components/competencias/competencias.component';
-import { NewExperienciaComponent } from './components/experiencia/new-experiencia.component';
-import { EditExperienciaComponent } from './components/experiencia/edit-experiencia.component';
+import { CursosAddComponent } from './components/cursos/cursos-add.component';
+import { CursosModComponent } from './components/cursos/cursos-mod.component';
+import { HabilidadesComponent } from './components/habilidades/habilidades.component';
+import { HabilidadesAddComponent } from './components/habilidades/habilidades-add.component';
+import { HabilidadesModComponent } from './components/habilidades/habilidades-mod.component';
 
 @NgModule({
   declarations: [
@@ -33,13 +38,18 @@ import { EditExperienciaComponent } from './components/experiencia/edit-experien
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    ExperienciaComponent,
     EstudiosComponent,
-    HabilidadesComponent,
+    EstudiosAddComponent,
+    EstudiosModComponent, 
+    ExperienciaComponent,
+    ExperienciaAddComponent,
+    ExperienciaModComponent,
     CursosComponent,
-    CompetenciasComponent,
-    NewExperienciaComponent,
-    EditExperienciaComponent
+    CursosAddComponent,
+    CursosModComponent,
+    HabilidadesComponent,
+    HabilidadesAddComponent,
+    HabilidadesModComponent
   ],
   imports: [
     BrowserModule,

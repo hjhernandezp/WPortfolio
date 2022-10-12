@@ -1,0 +1,27 @@
+<div clas="container">
+    <div class="row">
+        <div>
+            <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+                <div class="form-group">
+                    <label for="expEmpresa">Empresa/Organización</label>
+                    <input type="text" class="form-control" 
+                        id="expEmpresa" name="expEmpresa" 
+                        [(ngModel)]="expEmpresa" required>
+                </div>
+                <div class="form-group">
+                    <label for="expLugar">Lugar de Trabajo</label>
+                    <input type="text" class="form-control" 
+                        id="expLugar" name="expLugar" 
+                        [(ngModel)]="expLugar" required>
+                </div>
+                <div class="form-group">
+                    <label for="expCargo">Cargo Desempeñado</label>
+                    <input type="text" class="form-control" 
+                        id="expCargo" name="expCargo" 
+                        [(ngModel)]="expCargo" required>
+                </div>
+                <button class="btn btn-success">Aceptar</button>    
+            </form>
+        </div>
+    </div>
+</div>
