@@ -2,20 +2,26 @@
     <div class="row">
         <div id="SeccionAbout1" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
             <img class="mx-auto d-block"
+            id="FotoPerfil"
+            src="../../../assets/Foto_HectorHernandezPetit1.jpg"
+            img="img-fluid">
+            <!--
+                <img class="mx-auto d-block"
                 id="FotoPerfil"
-                src="../../../assets/Foto_HectorHernandezPetit1.jpg"
+                src={{persona.perImagen}}
                 img="img-fluid">
-                <p>{{usuario.nombre}} {{usuario.apellido}}</p>
-                <p>Full Stack Developer Jr.</p>
+            -->
+            <h5>{{persona.nombre}} {{persona.apellido}}</h5>
+            <p>Full Stack Developer Jr.</p>
+            <div *ngIf="isLogged">
+                <button type="button" class="btn btn-success" routerLink="about-mod/{{1}}">
+                    <i class="bi bi-pencil-fill"></i>
+                </button>
+            </div>
         </div>
         <div id="SeccionAbout2" class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
             <h2>Acerca de mí</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                Itaque cumque architecto, voluptas dolores perspiciatis culpa
-                at hic consequatur saepe quia praesentium beatae possimus. 
-                Ut numquam assumenda est magni optio mollitia?
-            </p>
+            <p>{{persona.descripcion}}</p>
         </div>
     </div>
 </div>

@@ -2,12 +2,20 @@
     <h3>
         Estudios Realizados
         <button type="button" class="btn btn-dark" routerLink="estudios-add" *ngIf="isLogged">
-            Añadir
             <i class="bi bi-plus-circle"></i>
         </button>
     </h3>
     <table class="table table-hover">
         <tbody>
+            <tr>
+                <th>Carrera</th>
+                <th>Mención</th>
+                <th>Status</th>
+                <th>Institución</th>
+                <th>Lugar</th>
+                <th>---</th>
+                <th>---</th>
+            </tr>
             <tr *ngFor="let Estudios of estudios">
                 <td>{{Estudios.estCarrera}}</td>
                 <td>{{Estudios.estMencion}}</td>
@@ -16,13 +24,11 @@
                 <td>{{Estudios.estLugar}}</td>
                 <td *ngIf="isLogged">
                     <button type="button" class="btn btn-success" routerLink="estudios-mod/{{Estudios.id}}">
-                        Editar
                         <i class="bi bi-pencil-fill"></i>
                     </button>
                 </td>
                 <td *ngIf="isLogged">
                     <button type="button" class="btn btn-danger" (click)="deleteEstudios(Estudios.id)">
-                        Borrar
                         <i class="bi bi-trash"></i>
                     </button>
                 </td>

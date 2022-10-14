@@ -60,5 +60,4 @@ public class DCursos {
     public void setCurHoras(int curHoras) {
         this.curHoras = curHoras;
     }
-
 }

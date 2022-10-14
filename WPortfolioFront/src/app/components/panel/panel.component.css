@@ -2,6 +2,8 @@
     width: auto;
     height: auto;
     background-color: #B0C4DE;
+    padding-top: 12px;
+    padding-bottom: 12px;
 }
 
 .tab-content {

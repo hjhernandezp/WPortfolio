@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutModComponent } from './components/about/about-mod.component';
 import { CursosAddComponent } from './components/cursos/cursos-add.component';
 import { CursosModComponent } from './components/cursos/cursos-mod.component';
 import { EstudiosAddComponent } from './components/estudios/estudios-add.component';
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'cursos-add', component: CursosAddComponent },
   { path: 'cursos-mod/:id', component: CursosModComponent },
   { path: 'habilidades-add', component: HabilidadesAddComponent},
-  { path: 'habilidades-mod/:id', component: HabilidadesModComponent}
+  { path: 'habilidades-mod/:id', component: HabilidadesModComponent},
+  { path: 'about-mod/:id', component: AboutModComponent}
 ];
 
 @NgModule({

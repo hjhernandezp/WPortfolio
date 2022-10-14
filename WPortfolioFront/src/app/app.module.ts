@@ -26,6 +26,7 @@ import { CursosModComponent } from './components/cursos/cursos-mod.component';
 import { HabilidadesComponent } from './components/habilidades/habilidades.component';
 import { HabilidadesAddComponent } from './components/habilidades/habilidades-add.component';
 import { HabilidadesModComponent } from './components/habilidades/habilidades-mod.component';
+import { AboutModComponent } from './components/about/about-mod.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { HabilidadesModComponent } from './components/habilidades/habilidades-mo
     CursosModComponent,
     HabilidadesComponent,
     HabilidadesAddComponent,
-    HabilidadesModComponent
+    HabilidadesModComponent,
+    AboutModComponent
   ],
   imports: [
     BrowserModule,

@@ -1,43 +1,48 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Estudios } from 'src/app/models/estudios';
-import { EstudiosService } from 'src/app/services/estudios.service';
+import { Persona } from 'src/app/models/persona';
+import { PersonaService } from 'src/app/services/persona.service';
 
 @Component({
-  selector: 'app-estudios-mod',
-  templateUrl: './estudios-mod.component.html',
-  styleUrls: ['./estudios-mod.component.css']
+  selector: 'app-about-mod',
+  templateUrl: './about-mod.component.html',
+  styleUrls: ['./about-mod.component.css']
 })
-export class EstudiosModComponent implements OnInit {
-  estudios: Estudios = null;
+export class AboutModComponent implements OnInit {
+  persona: Persona = null;
 
   constructor(
-    private serEstudios: EstudiosService, 
+    private serPersona: PersonaService, 
     private activatedRoute: ActivatedRoute, 
     private router: Router
   ) { }
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params['id'];
-    this.serEstudios.detail(id).subscribe(
+    this.serPersona.detail(id).subscribe(
       data => {
-        this.estudios = data
+        this.persona = data
       }, err => {
         alert("Error de sistema")
         this.router.navigate([''])
       }
     );
   }
-
+  
   onUpdate(): void {
     const id = this.activatedRoute.snapshot.params['id'];
-    this.serEstudios.update(id, this.estudios).subscribe(
+    this.serPersona.update(id, this.persona).subscribe(
       data => {
         this.router.navigate([''])
       }, err => {
-        alert("Error de sistema al editar: Estudios");
+        alert("Error de sistema al editar: Persona")
         this.router.navigate([''])
       }
     );
   }
+
+  uploadImage($event: any) {
+
+  }
+
 }

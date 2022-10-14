@@ -20,8 +20,8 @@ public class Experiencia {
 
     public Experiencia(
             String expEmpresa,
-            String expCargo,
-            String expLugar
+            String expLugar,
+            String expCargo
     ) {
         this.expEmpresa = expEmpresa;
         this.expLugar = expLugar;

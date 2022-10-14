@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Persona } from 'src/app/models/persona.module';
+import { Persona } from 'src/app/models/persona';
 import { PersonaService } from 'src/app/services/persona.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-about',
@@ -8,12 +9,29 @@ import { PersonaService } from 'src/app/services/persona.service';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
+  persona: Persona = null;
 
-  usuario: Persona = new Persona("","","");
+  constructor(
+    private serPersona: PersonaService, 
+    private serToken: TokenService
+  ) { }
 
-  constructor(public personaService: PersonaService) { }
+  isLogged = false;
 
   ngOnInit(): void {
-    this.personaService.getPersona().subscribe(data => {this.usuario = data})
+    this.loadPesona();
+    if(this.serToken.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
+  }
+
+  loadPesona() {
+    this.serPersona.detail(1).subscribe(
+      data => {
+        this.persona = data
+      }
+    );
   }
 }

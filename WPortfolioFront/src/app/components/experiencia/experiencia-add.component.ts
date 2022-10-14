@@ -9,9 +9,9 @@ import { ExperienciaService } from 'src/app/services/experiencia.service';
   styleUrls: ['./experiencia-add.component.css']
 })
 export class ExperienciaAddComponent implements OnInit {
-  expEmpresa: string = '';
-  expLugar: string = '';
-  expCargo: string = '';
+  expEmpresa: string;
+  expLugar: string;
+  expCargo: string;
   
   constructor(
     private serExperiencia: ExperienciaService, 

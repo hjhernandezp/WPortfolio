@@ -57,7 +57,7 @@ public class CCursos {
         }
         
         if(StringUtils.isBlank(dtoCursos.getCurNombre())) {
-            return new ResponseEntity(new Mensaje("Dato requerido: Carrera"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("Dato requerido: Nombre"), HttpStatus.BAD_REQUEST);
         }
         
         if(StringUtils.isBlank(dtoCursos.getCurInstituto())) {
@@ -139,5 +139,4 @@ public class CCursos {
         serCursos.delete(id);
         return new ResponseEntity(new Mensaje("Registro eliminado en: Cursos"), HttpStatus.OK);
     }
-
 }

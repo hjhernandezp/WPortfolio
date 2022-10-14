@@ -16,7 +16,6 @@ public class SCursos {
     
     public List<Cursos> list() {
         return repCursos.findAll();
-        
     }
     
     public Optional<Cursos> getOne(int id) {
@@ -42,5 +41,4 @@ public class SCursos {
     public boolean existsByCurNombre(String curNombre) {
         return repCursos.existsByCurNombre(curNombre);
     }
-
 }
