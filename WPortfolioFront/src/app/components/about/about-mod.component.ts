@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Persona } from 'src/app/models/persona';
+import { ImageService } from 'src/app/services/image.service';
 import { PersonaService } from 'src/app/services/persona.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class AboutModComponent implements OnInit {
   constructor(
     private serPersona: PersonaService, 
     private activatedRoute: ActivatedRoute, 
-    private router: Router
+    private router: Router,
+    public serImage: ImageService
   ) { }
 
   ngOnInit(): void {
@@ -31,6 +33,7 @@ export class AboutModComponent implements OnInit {
   
   onUpdate(): void {
     const id = this.activatedRoute.snapshot.params['id'];
+    this.persona.imagen = this.serImage.URLimagen;
     this.serPersona.update(id, this.persona).subscribe(
       data => {
         this.router.navigate([''])
@@ -42,7 +45,8 @@ export class AboutModComponent implements OnInit {
   }
 
   uploadImage($event: any) {
-
+    const id = this.activatedRoute.snapshot.params['id'];
+    const nombre = 'perfil_' + id;
+    this.serImage.uploadImage($event, nombre);
   }
-
 }

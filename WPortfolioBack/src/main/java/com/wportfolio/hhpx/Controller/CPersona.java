@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("persona")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/persona")
+@CrossOrigin(origins = {"http://localhost:4200", "https://webportfolio-nl1014.web.app"})
 public class CPersona {
     @Autowired
     SPersona serPersona;
@@ -64,6 +64,7 @@ public class CPersona {
             return new ResponseEntity(new Mensaje("Dato requerido: Apellido"), HttpStatus.BAD_REQUEST);
         }
         
+        /*
         if(StringUtils.isBlank(dtoPersona.getDescripcion())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Descripcion"), HttpStatus.BAD_REQUEST);
         }
@@ -71,7 +72,8 @@ public class CPersona {
         if(StringUtils.isBlank(dtoPersona.getImagen())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Imagen"), HttpStatus.BAD_REQUEST);
         }
-        
+        */
+
         //ASIGNACIONES
         Persona persona = new Persona(
                 dtoPersona.getNombre(), 
@@ -106,6 +108,7 @@ public class CPersona {
             return new ResponseEntity(new Mensaje("Dato requerido: Apellido"), HttpStatus.BAD_REQUEST);
         }
         
+        /*
         if(StringUtils.isBlank(dtoPersona.getDescripcion())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Descripcion"), HttpStatus.BAD_REQUEST);
         }
@@ -113,6 +116,7 @@ public class CPersona {
         if(StringUtils.isBlank(dtoPersona.getImagen())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Imagen"), HttpStatus.BAD_REQUEST);
         }
+        */
         
         //ASIGNACIONES
         Persona persona = serPersona.getOne(id).get();

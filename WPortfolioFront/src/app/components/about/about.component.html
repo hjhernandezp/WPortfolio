@@ -1,27 +1,18 @@
 <div id="AreaAbout" class="container-fluid">
-    <div class="row">
-        <div id="SeccionAbout1" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-            <img class="mx-auto d-block"
-            id="FotoPerfil"
-            src="../../../assets/Foto_HectorHernandezPetit1.jpg"
-            img="img-fluid">
-            <!--
-                <img class="mx-auto d-block"
-                id="FotoPerfil"
-                src={{persona.perImagen}}
-                img="img-fluid">
-            -->
-            <h5>{{persona.nombre}} {{persona.apellido}}</h5>
+    <div class="row" *ngFor="let Persona of persona">
+        <div id="SeccionAbout1" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">     
+            <img class="mx-auto d-block" id="FotoPerfil" src={{Persona.imagen}} img="img-fluid">
+            <h5>{{Persona.nombre}} {{Persona.apellido}}</h5>
             <p>Full Stack Developer Jr.</p>
-            <div *ngIf="isLogged">
-                <button type="button" class="btn btn-success" routerLink="about-mod/{{1}}">
-                    <i class="bi bi-pencil-fill"></i>
-                </button>
-            </div>
         </div>
         <div id="SeccionAbout2" class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
             <h2>Acerca de mí</h2>
-            <p>{{persona.descripcion}}</p>
+            <p>{{Persona.descripcion}}</p>
+        </div>
+        <div *ngIf="isLogged">
+            <button type="button" class="btn btn-success" routerLink="/about-mod/1">
+                <i class="bi bi-pencil-fill"></i>
+            </button>
         </div>
     </div>
 </div>

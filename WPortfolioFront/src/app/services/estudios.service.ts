@@ -8,7 +8,7 @@ import { Estudios } from '../models/estudios';
   providedIn: 'root'
 })
 export class EstudiosService {
-  URLest = environment.URL + 'estudios';
+  URLest = environment.URL + '/estudios';
 
   constructor(private httpx: HttpClient) { }
 

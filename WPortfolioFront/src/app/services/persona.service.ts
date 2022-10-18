@@ -7,9 +7,8 @@ import { Persona } from '../models/persona';
 @Injectable({
   providedIn: 'root'
 })
-
 export class PersonaService {
-  URLper = environment.URL + 'persona';
+  URLper = environment.URL + '/persona';
 
   constructor(private httpx: HttpClient) { }
 

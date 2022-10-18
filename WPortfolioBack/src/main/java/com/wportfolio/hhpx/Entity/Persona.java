@@ -21,7 +21,6 @@ public class Persona {
     @Size(min = 1, max = 50, message = "Máximo 50 caracteres")
     private String apellido;
     
-    @NotNull
     private String descripcion;
     
     private String imagen;

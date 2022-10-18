@@ -1,15 +1,14 @@
 package com.wportfolio.hhpx.Dto;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class DPersona {
-    @NotBlank
+    @NotNull
     private String nombre;
-    @NotBlank
+    @NotNull
     private String apellido;
-    @NotBlank
     private String descripcion;
-    @NotBlank
     private String imagen;
     
     //CONSTRUCTOR

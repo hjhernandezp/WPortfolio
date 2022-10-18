@@ -1,12 +1,11 @@
 package com.wportfolio.hhpx.Dto;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 public class DHabilidades {
     @NotBlank
     private String habNombre;
-    @NotNull
+    @NotBlank
     private int habNivel;
     
     //CONSTRUCTOR
@@ -38,8 +37,9 @@ public class DHabilidades {
         this.habNivel = habNivel;
     }
 
+    /*NO SÉ NI CÓMO NI CUANDO APARECIÓ ESTO, COMENTADO PROVISIONALMENTE, LUEGO BORRAR
     public CharSequence getCurInstituto() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+    */
 }

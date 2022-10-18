@@ -27,6 +27,9 @@ import { HabilidadesComponent } from './components/habilidades/habilidades.compo
 import { HabilidadesAddComponent } from './components/habilidades/habilidades-add.component';
 import { HabilidadesModComponent } from './components/habilidades/habilidades-mod.component';
 import { AboutModComponent } from './components/about/about-mod.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,9 @@ import { AboutModComponent } from './components/about/about-mod.component';
     FormsModule,
     AppRoutingModule,
     NgCircleProgressModule.forRoot({}),
-    HttpClientModule
+    HttpClientModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage())
   ],
   providers: [
     interceptorProvider

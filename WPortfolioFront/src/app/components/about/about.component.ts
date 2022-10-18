@@ -9,7 +9,7 @@ import { TokenService } from 'src/app/services/token.service';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
-  persona: Persona = null;
+  persona: Persona[] = [];
 
   constructor(
     private serPersona: PersonaService, 
@@ -28,7 +28,7 @@ export class AboutComponent implements OnInit {
   }
 
   loadPesona() {
-    this.serPersona.detail(1).subscribe(
+    this.serPersona.lista().subscribe(
       data => {
         this.persona = data
       }

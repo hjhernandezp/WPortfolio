@@ -25,7 +25,6 @@ export class HabilidadesAddComponent implements OnInit {
       this.habNombre, 
       this.habNivel
     );
-
     this.serHabilidades.save(habilidades).subscribe(
       data => {
         alert("Registro añadido correctamente en: Habilidades")

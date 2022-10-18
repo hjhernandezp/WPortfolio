@@ -8,7 +8,7 @@ import { Habilidades } from '../models/habilidades';
   providedIn: 'root'
 })
 export class HabilidadesService {
-  URLhab = environment.URL + 'habilidades';
+  URLhab = environment.URL + '/habilidades';
 
   constructor(private httpx: HttpClient) { }
 

@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("habilidades")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/habilidades")
+@CrossOrigin(origins = {"http://localhost:4200", "https://webportfolio-nl1014.web.app"})
 public class CHabilidades {
     @Autowired
     SHabilidades serHabilidades;
@@ -117,7 +117,7 @@ public class CHabilidades {
         
         //ELIMINACION
         serHabilidades.delete(id);
-        return new ResponseEntity(new Mensaje("Registro eliminado en: Cursos"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Registro eliminado en: Habilidades"), HttpStatus.OK);
     }
 
 }
