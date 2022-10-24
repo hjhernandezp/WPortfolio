@@ -15,21 +15,17 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { interceptorProvider } from './services/interceptor-service';
 import { EstudiosComponent } from './components/estudios/estudios.component';
-import { EstudiosAddComponent } from './components/estudios/estudios-add.component';
-import { EstudiosModComponent } from './components/estudios/estudios-mod.component';
 import { ExperienciaComponent } from './components/experiencia/experiencia.component';
-import { ExperienciaAddComponent } from './components/experiencia/experiencia-add.component';
-import { ExperienciaModComponent } from './components/experiencia/experiencia-mod.component';
 import { CursosComponent } from './components/cursos/cursos.component';
-import { CursosAddComponent } from './components/cursos/cursos-add.component';
-import { CursosModComponent } from './components/cursos/cursos-mod.component';
 import { HabilidadesComponent } from './components/habilidades/habilidades.component';
-import { HabilidadesAddComponent } from './components/habilidades/habilidades-add.component';
-import { HabilidadesModComponent } from './components/habilidades/habilidades-mod.component';
 import { AboutModComponent } from './components/about/about-mod.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { ProyectosComponent } from './components/proyectos/proyectos.component';
+
+//Ng Bootstrap
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -43,21 +39,15 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     HomeComponent,
     LoginComponent,
     EstudiosComponent,
-    EstudiosAddComponent,
-    EstudiosModComponent, 
     ExperienciaComponent,
-    ExperienciaAddComponent,
-    ExperienciaModComponent,
     CursosComponent,
-    CursosAddComponent,
-    CursosModComponent,
     HabilidadesComponent,
-    HabilidadesAddComponent,
-    HabilidadesModComponent,
-    AboutModComponent
+    AboutModComponent, 
+    ProyectosComponent
   ],
   imports: [
     BrowserModule,
+    NgbModule,
     FormsModule,
     AppRoutingModule,
     NgCircleProgressModule.forRoot({}),

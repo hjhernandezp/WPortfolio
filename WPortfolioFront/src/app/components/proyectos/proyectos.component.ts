@@ -1,32 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Estudios } from 'src/app/models/estudios';
-import { EstudiosService } from 'src/app/services/estudios.service';
+import { Proyectos } from 'src/app/models/proyectos';
+import { ProyectosService } from 'src/app/services/proyectos.service';
 import { TokenService } from 'src/app/services/token.service';
 
 @Component({
-  selector: 'app-estudios',
-  templateUrl: './estudios.component.html',
-  styleUrls: ['./estudios.component.css']
+  selector: 'app-proyectos',
+  templateUrl: './proyectos.component.html',
+  styleUrls: ['./proyectos.component.css']
 })
-export class EstudiosComponent implements OnInit {
+export class ProyectosComponent implements OnInit {
   
   //ARREGLO Y OBJETO
-  arreglo: Estudios[] = [];
-  objeto: Estudios = null;
+  arreglo: Proyectos[] = [];
+  objeto: Proyectos = null;
   
   //DATOS
-  carrera: string;
-  mencion: string;
-  estado: string;
-  instituto: string
-  lugar: string;
+  nombre: string;
+  descripcion: string;
+  enlace: string;
+  imagen: string;
 
   //HABILITANTE
   isLogged = false;
 
   constructor(
-    private ComService: EstudiosService, 
+    private ComService: ProyectosService, 
     private SerToken: TokenService,
     private ModalService: NgbModal
   ) { }
@@ -49,11 +48,10 @@ export class EstudiosComponent implements OnInit {
   }
 
   onReset(): void {
-    this.carrera = null;
-    this.mencion = null;
-    this.estado = null;
-    this.instituto
-    this.lugar = null;
+    this.nombre = null;
+    this.descripcion = null;
+    this.enlace = null;
+    this.imagen = null;
   }
 
   onLocate(id: number, referencia: any) {
@@ -68,20 +66,19 @@ export class EstudiosComponent implements OnInit {
   }
 
   onCreate(): void {
-    const estudios = new Estudios(
-      this.carrera, 
-      this.mencion,
-      this.estado,
-      this.instituto,
-      this.lugar
+    const proyectos = new Proyectos(
+      this.nombre, 
+      this.descripcion,
+      this.enlace,
+      this.imagen
     );
-    this.ComService.save(estudios).subscribe(
+    this.ComService.save(proyectos).subscribe(
       data => {
         this.onLoad()
         this.onReset()
-        alert("Registro añadido correctamente en: Estudios")
+        alert("Registro añadido correctamente en: Proyectos")
       }, err=> {
-        alert("Error de sistema al añadir: Estudios")
+        alert("Error de sistema al añadir: Proyectos")
       }
     );
   }
@@ -90,9 +87,9 @@ export class EstudiosComponent implements OnInit {
     this.ComService.update(id, this.objeto).subscribe(
       data => {
         this.onLoad()
-        alert("Registro actualizado en: Estudios")
+        alert("Registro actualizado en: Proyectos")
       }, err => {
-        alert("Error de sistema al editar: Estudios")
+        alert("Error de sistema al editar: Proyectos")
       }
     );
   }
@@ -102,9 +99,9 @@ export class EstudiosComponent implements OnInit {
       this.ComService.delete(id).subscribe(
         data => {
           this.onLoad()
-          alert("Registro eliminado en: Estudios")
+          alert("Registro eliminado en: Proyectos")
         }, err => {
-          alert("Error de sistema al borrar: Estudios")
+          alert("Error de sistema al borrar: Proyectos")
         }
       );
     }

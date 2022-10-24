@@ -24,12 +24,12 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = {"http://localhost:4200", "https://webportfolio-nl1014.web.app"})
 public class CExperiencia {
     @Autowired
-    SExperiencia serExperiencia;
+    SExperiencia SerExperiencia;
     
     //LISTA
     @GetMapping("/lista")
     public ResponseEntity<List<Experiencia>> list() {
-        List<Experiencia> list = serExperiencia.list();
+        List<Experiencia> list = SerExperiencia.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
@@ -38,81 +38,81 @@ public class CExperiencia {
     public ResponseEntity<Experiencia> getById(@PathVariable("id") int id){
         
         //VERIFICACIONES
-        if(!serExperiencia.existsById(id)) {
+        if(!SerExperiencia.existsById(id)) {
             return new ResponseEntity(new Mensaje("ID no encontrado"), HttpStatus.NOT_FOUND);
         }
         
         //OBTENCION
-        Experiencia entExperiencia = serExperiencia.getOne(id).get();
-        return new ResponseEntity(entExperiencia, HttpStatus.OK);
+        Experiencia experiencia = SerExperiencia.getOne(id).get();
+        return new ResponseEntity(experiencia, HttpStatus.OK);
     }
     
     //CREACION (NUEVO)
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody DExperiencia dtoExperiencia) {
+    public ResponseEntity<?> create(@RequestBody DExperiencia DtoExperiencia) {
         
         //VERIFICACIONES
-         if(serExperiencia.existsByExpEmpresa(dtoExperiencia.getExpEmpresa())) {
+         if(SerExperiencia.existsByEmpresa(DtoExperiencia.getEmpresa())) {
             return new ResponseEntity(new Mensaje("Registro ya existe en: Experiencia"), HttpStatus.BAD_REQUEST);
         }
         
-        if(StringUtils.isBlank(dtoExperiencia.getExpEmpresa())) {
+        if(StringUtils.isBlank(DtoExperiencia.getEmpresa())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Empresa"), HttpStatus.BAD_REQUEST);
         }
         
-        if(StringUtils.isBlank(dtoExperiencia.getExpLugar())) {
+        if(StringUtils.isBlank(DtoExperiencia.getLugar())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Lugar"), HttpStatus.BAD_REQUEST);
         }
         
-        if(StringUtils.isBlank(dtoExperiencia.getExpCargo())) {
+        if(StringUtils.isBlank(DtoExperiencia.getCargo())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Cargo"), HttpStatus.BAD_REQUEST);
         }
         
         //ASIGNACIONES
-        Experiencia entExperiencia = new Experiencia(
-                dtoExperiencia.getExpEmpresa(), 
-                dtoExperiencia.getExpLugar(),
-                dtoExperiencia.getExpCargo()
+        Experiencia experiencia = new Experiencia(
+                DtoExperiencia.getEmpresa(), 
+                DtoExperiencia.getLugar(),
+                DtoExperiencia.getCargo()
         );
         
         //INCORPORACION
-        serExperiencia.save(entExperiencia);
+        SerExperiencia.save(experiencia);
         return new ResponseEntity(new Mensaje("Registro incorporado a: Experiencia"), HttpStatus.OK);
     }
     
     //EDICION
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody DExperiencia dtoExperiencia) {
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody DExperiencia DtoExperiencia) {
         
         //VERIFICACIONES
-        if(!serExperiencia.existsById(id)) {
+        if(!SerExperiencia.existsById(id)) {
             return new ResponseEntity(new Mensaje("ID no encontrado"), HttpStatus.NOT_FOUND);
         }
         
-        if(serExperiencia.existsByExpEmpresa(dtoExperiencia.getExpEmpresa()) && serExperiencia.getByExpEmpresa(dtoExperiencia.getExpEmpresa()).get().getId() != id) {
+        if(SerExperiencia.existsByEmpresa(DtoExperiencia.getEmpresa()) && SerExperiencia.getByEmpresa(DtoExperiencia.getEmpresa()).get().getId() != id) {
             return new ResponseEntity(new Mensaje("Registro ya existe en: Experiencia"), HttpStatus.BAD_REQUEST);            
         }
 
-        if(StringUtils.isBlank(dtoExperiencia.getExpEmpresa())) {
+        if(StringUtils.isBlank(DtoExperiencia.getEmpresa())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Empresa"), HttpStatus.BAD_REQUEST);
         }
         
-        if(StringUtils.isBlank(dtoExperiencia.getExpLugar())) {
+        if(StringUtils.isBlank(DtoExperiencia.getLugar())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Lugar"), HttpStatus.BAD_REQUEST);
         }
         
-        if(StringUtils.isBlank(dtoExperiencia.getExpCargo())) {
+        if(StringUtils.isBlank(DtoExperiencia.getCargo())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Cargo"), HttpStatus.BAD_REQUEST);
         }
         
         //ASIGNACIONES
-        Experiencia entExperiencia = serExperiencia.getOne(id).get();
-        entExperiencia.setExpEmpresa(dtoExperiencia.getExpEmpresa());
-        entExperiencia.setExpLugar(dtoExperiencia.getExpLugar());
-        entExperiencia.setExpCargo(dtoExperiencia.getExpCargo());
+        Experiencia experiencia = SerExperiencia.getOne(id).get();
+        experiencia.setEmpresa(DtoExperiencia.getEmpresa());
+        experiencia.setLugar(DtoExperiencia.getLugar());
+        experiencia.setCargo(DtoExperiencia.getCargo());
         
         //ACTUALIZACION
-        serExperiencia.save(entExperiencia);
+        SerExperiencia.save(experiencia);
         return new ResponseEntity(new Mensaje("Registro actualizado en: Experiencia"), HttpStatus.OK);
     }
     
@@ -121,13 +121,12 @@ public class CExperiencia {
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
         
         //VERIFICACIONES
-        if(!serExperiencia.existsById(id)) {
+        if(!SerExperiencia.existsById(id)) {
             return new ResponseEntity(new Mensaje("ID no encontrado"), HttpStatus.NOT_FOUND);
         }
         
         //ELIMINACION
-        serExperiencia.delete(id);
+        SerExperiencia.delete(id);
         return new ResponseEntity(new Mensaje("Registro eliminado en: Experiencia"), HttpStatus.OK);
     }
-
 }

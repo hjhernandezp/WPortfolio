@@ -4,23 +4,32 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Habilidades {
-    //HAB -> Habilidades
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String habNombre;
-    private int habNivel;
+    @NotNull
+    @Size(min = 1, max = 30, message = "Máximo 30 caracteres")
+    private String nombre;
+    @NotNull
+    @Min(1)
+    @Max(100)
+    private int nivel;
     
     //CONSTRUCTOR
     public Habilidades() {
     }
 
-    public Habilidades(String habNombre, int habNivel) {
-        this.habNombre = habNombre;
-        this.habNivel = habNivel;
+    public Habilidades(String nombre, int nivel) {
+        this.nombre = nombre;
+        this.nivel = nivel;
     }
     
     //GETTERS & SETTERS
@@ -32,20 +41,19 @@ public class Habilidades {
         this.id = id;
     }
 
-    public String getHabNombre() {
-        return habNombre;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setHabNombre(String habNombre) {
-        this.habNombre = habNombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public int getHabNivel() {
-        return habNivel;
+    public int getNivel() {
+        return nivel;
     }
 
-    public void setHabNivel(int habNivel) {
-        this.habNivel = habNivel;
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
     }
-
 }

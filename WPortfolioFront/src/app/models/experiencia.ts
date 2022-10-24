@@ -1,16 +1,16 @@
 export class Experiencia {
     id?: number;
-    expEmpresa: string;
-    expLugar: string;
-    expCargo: string;
+    empresa: string;
+    lugar: string;
+    cargo: string;
 
     constructor(
-        expEmpresa: string, 
-        expLugar: string, 
-        expCargo: string
+        empresa: string, 
+        lugar: string, 
+        cargo: string
     ) {
-        this.expEmpresa = expEmpresa;
-        this.expLugar = expLugar;
-        this.expCargo = expCargo;
+        this.empresa = empresa;
+        this.lugar = lugar;
+        this.cargo = cargo;
     }
 }

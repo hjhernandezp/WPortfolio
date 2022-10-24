@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface REstudios extends JpaRepository<Estudios, Integer> {
-    public Optional<Estudios> findByEstCarrera(String estCarrera);
-    public boolean existsByEstCarrera(String estCarrera);
+    public Optional<Estudios> findByCarrera(String carrera);
+    public boolean existsByCarrera(String carrera);
 }

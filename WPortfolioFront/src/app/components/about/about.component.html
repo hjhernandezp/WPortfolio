@@ -1,18 +1,20 @@
 <div id="AreaAbout" class="container-fluid">
-    <div class="row" *ngFor="let Persona of persona">
+    <div class="row" *ngFor="let campos of persona">
         <div id="SeccionAbout1" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">     
-            <img class="mx-auto d-block" id="FotoPerfil" src={{Persona.imagen}} img="img-fluid">
-            <h5>{{Persona.nombre}} {{Persona.apellido}}</h5>
+            <img class="mx-auto d-block" id="FotoPerfil" src={{campos.imagen}} img="img-fluid">
+        </div>
+        <div id="SeccionAbout2" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+            <h5>{{campos.nombre}} {{campos.apellido}}</h5>
             <p>Full Stack Developer Jr.</p>
+            <div *ngIf="isLogged">
+                <button type="button" class="btn btn-success" routerLink="/about-mod/1">
+                    <i class="bi bi-pencil-fill"> Editar Datos</i>
+                </button>
+            </div>
         </div>
-        <div id="SeccionAbout2" class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-            <h2>Acerca de mí</h2>
-            <p>{{Persona.descripcion}}</p>
-        </div>
-        <div *ngIf="isLogged">
-            <button type="button" class="btn btn-success" routerLink="/about-mod/1">
-                <i class="bi bi-pencil-fill"></i>
-            </button>
+        <div id="SeccionAbout3" class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <h5>Acerca de mí</h5>
+            <p>{{campos.descripcion}}</p>
         </div>
     </div>
 </div>

@@ -12,35 +12,34 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class SEstudios {
     @Autowired
-    REstudios repEstudios;
+    REstudios RepEstudios;
     
     public List<Estudios> list() {
-        return repEstudios.findAll();
+        return RepEstudios.findAll();
         
     }
     
     public Optional<Estudios> getOne(int id) {
-        return repEstudios.findById(id);
+        return RepEstudios.findById(id);
     }
     
-    public Optional<Estudios> getByEstCarrera(String estCarrera) {
-        return repEstudios.findByEstCarrera(estCarrera);
+    public Optional<Estudios> getByCarrera(String carrera) {
+        return RepEstudios.findByCarrera(carrera);
     }
     
-    public void save(Estudios entEstudios) {
-        repEstudios.save(entEstudios);
+    public void save(Estudios estudios) {
+        RepEstudios.save(estudios);
     }
     
     public void delete(int id) {
-        repEstudios.deleteById(id);
+        RepEstudios.deleteById(id);
     }
     
     public boolean existsById(int id) {
-        return repEstudios.existsById(id);
+        return RepEstudios.existsById(id);
     }
     
-    public boolean existsByEstCarrera(String estCarrera) {
-        return repEstudios.existsByEstCarrera(estCarrera);
+    public boolean existsByCarrera(String carrera) {
+        return RepEstudios.existsByCarrera(carrera);
     }
-    
 }

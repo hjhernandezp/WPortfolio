@@ -12,34 +12,33 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class SHabilidades {
     @Autowired
-    RHabilidades repHabilidades;
+    RHabilidades RepHabilidades;
     
     public List<Habilidades> list() {
-        return repHabilidades.findAll();
+        return RepHabilidades.findAll();
     }
     
     public Optional<Habilidades> getOne(int id) {
-        return repHabilidades.findById(id);
+        return RepHabilidades.findById(id);
     }
     
-    public Optional<Habilidades> getByHabNombre(String habNombre) {
-        return repHabilidades.findByHabNombre(habNombre);
+    public Optional<Habilidades> getByNombre(String nombre) {
+        return RepHabilidades.findByNombre(nombre);
     }
     
-    public void save(Habilidades entHabilidades) {
-        repHabilidades.save(entHabilidades);
+    public void save(Habilidades habilidades) {
+        RepHabilidades.save(habilidades);
     }
     
     public void delete(int id) {
-        repHabilidades.deleteById(id);
+        RepHabilidades.deleteById(id);
     }
     
     public boolean existsById(int id) {
-        return repHabilidades.existsById(id);
+        return RepHabilidades.existsById(id);
     }
     
-    public boolean existsByHabNombre(String habNombre) {
-        return repHabilidades.existsByHabNombre(habNombre);
+    public boolean existsByNombre(String nombre) {
+        return RepHabilidades.existsByNombre(nombre);
     }
-
 }

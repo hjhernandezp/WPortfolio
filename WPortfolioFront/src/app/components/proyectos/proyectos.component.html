@@ -1,7 +1,7 @@
 <!-- Cuerpo Princpal -->
 <div>
     <h3>
-        Estudios Realizados
+        Proyectos Desarrollados
         <button type="button" class="btn btn-dark" 
             (click)="openModal(Add)" *ngIf="isLogged">
             <i class="bi bi-plus-circle"></i>
@@ -10,20 +10,18 @@
     <table class="table table-hover">
         <tbody>
             <tr>
-                <th>Carrera</th>
-                <th>Mencion</th>
-                <th>Estado</th>
-                <th>Instituo</th>
-                <th>Lugar</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Enlace</th>
+                <th>Imagen</th>
                 <th>---</th>
                 <th>---</th>
             </tr>
             <tr *ngFor="let campo of arreglo">
-                <td>{{campo.carrera}}</td>
-                <td>{{campo.mencion}}</td>
-                <td>{{campo.estado}}</td>
-                <td>{{campo.instituto}}</td>
-                <td>{{campo.lugar}}</td>
+                <td>{{campo.nombre}}</td>
+                <td>{{campo.descripcion}}</td>
+                <td>{{campo.enlace}}</td>
+                <td>{{campo.imagen}}</td>
                 <td *ngIf="isLogged">
                     <button type="button" class="btn btn-success" 
                         (click)="onLocate(campo.id, Mod)">
@@ -44,7 +42,7 @@
 <!-- Añadir Registro -->
 <ng-template #Add let-modal>
     <div class="modal-header">
-        <h4 class="modal-title">Añadir Estudios</h4>     
+        <h4 class="modal-title">Añadir Proyectos</h4>     
         <button type="button" class="close" aria-label="close" 
             (click)="modal.dismiss()">
             <span aria-hidden="true">&times;</span>
@@ -53,38 +51,31 @@
     <div class="modal-body">
         <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
             <div class="form-group">
-                <label for="carrera">Carrera</label>
+                <label for="nombre">Nombre</label>
                 <input type="text" class="form-control" 
-                    id="carrera" name="carrera" 
-                    [(ngModel)]="carrera" required />
+                    id="nombre" name="nombre" 
+                    [(ngModel)]="nombre" required />
             </div>
             <p></p>
             <div class="form-group">
-                <label for="mencion">Mención</label>
+                <label for="descripcion">Descripción</label>
                 <input type="text" class="form-control" 
-                    id="mencion" name="mencion" 
-                    [(ngModel)]="mencion" required />
+                    id="descripcion" name="descripcion" 
+                    [(ngModel)]="descripcion" required />
             </div>
             <p></p>
             <div class="form-group">
-                <label for="estado">Estado</label>
+                <label for="cargo">Enlace</label>
                 <input type="text" class="form-control" 
-                    id="estado" name="estado" 
-                    [(ngModel)]="estado" required />
+                    id="enlace" name="enlace" 
+                    [(ngModel)]="enlace" />
             </div>
             <p></p>
             <div class="form-group">
-                <label for="instituto">Instituto</label>
+                <label for="imagen">Imagen</label>
                 <input type="text" class="form-control" 
-                    id="instituto" name="instituto" 
-                    [(ngModel)]="instituto" required />
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label for="lugar">Lugar</label>
-                <input type="text" class="form-control" 
-                    id="lugar" name="lugar" 
-                    [(ngModel)]="lugar" />
+                    id="imagen" name="imagen" 
+                    [(ngModel)]="imagen" />
             </div>
             <p></p>
             <button type="submit" class="btn btn-success" 
@@ -97,7 +88,7 @@
 <!-- Modificar Registro -->
 <ng-template #Mod let-modal>
     <div class="modal-header">
-        <h4 class="modal-title">Editar Estudios</h4>     
+        <h4 class="modal-title">Editar Proeyctos</h4>     
         <button type="button" class="close" aria-label="close" 
             (click)="modal.dismiss()">
             <span aria-hidden="true">&times;</span>
@@ -106,38 +97,31 @@
     <div class="modal-body">
         <form (ngSubmit)="onUpdate(objeto.id)" novalidate #f="ngForm">
             <div class="form-group">
-                <label for="carrera">Carrera</label>
+                <label for="nombre">Nombre</label>
                 <input type="text" class="form-control" 
-                    id="carrera" name="carrera" 
-                    [(ngModel)]="objeto.carrera" required />
+                    id="nombre" name="nombre" 
+                    [(ngModel)]="objeto.nombre" required />
             </div>
             <p></p>
             <div class="form-group">
-                <label for="mencion">Mención</label>
+                <label for="descripcion">Descripción</label>
                 <input type="text" class="form-control" 
-                    id="mencion" name="mencion" 
-                    [(ngModel)]="objeto.mencion" required />
+                    id="descripcion" name="descripcion" 
+                    [(ngModel)]="objeto.descripcion" required />
             </div>
             <p></p>
             <div class="form-group">
-                <label for="estado">Estado</label>
+                <label for="enlace">Enlace</label>
                 <input type="text" class="form-control" 
-                    id="estado" name="estado" 
-                    [(ngModel)]="objeto.estado" required />
+                    id="enlace" name="enlace" 
+                    [(ngModel)]="objeto.enlace" />
             </div>
             <p></p>
             <div class="form-group">
-                <label for="instituto">Instituto</label>
+                <label for="imagen">Imagen</label>
                 <input type="text" class="form-control" 
-                    id="instituto" name="instituto" 
-                    [(ngModel)]="objeto.instituto" required />
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label for="lugar">Lugar</label>
-                <input type="text" class="form-control" 
-                    id="lugar" name="lugar" 
-                    [(ngModel)]="objeto.lugar" />
+                    id="imagen" name="imagen" 
+                    [(ngModel)]="objeto.imagen" />
             </div>
             <p></p>
             <button type="submit" class="btn btn-success" 

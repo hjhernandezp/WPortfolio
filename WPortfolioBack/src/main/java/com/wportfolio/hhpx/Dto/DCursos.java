@@ -1,63 +1,57 @@
 package com.wportfolio.hhpx.Dto;
 
-import javax.validation.constraints.NotBlank;
-
 public class DCursos {
-    @NotBlank
-    private String curNombre;
-    @NotBlank
-    private String curInstituto;
-    @NotBlank
-    private String curLugar;
-    @NotBlank
-    private int curHoras;
+    private String nombre;
+    private String instituto;
+    private String lugar;
+    private int horas;
     
     //CONSTRUCTOR
     public DCursos() {
     }
 
     public DCursos(
-            String curNombre,
-            String curInstituto,
-            String curLugar,
-            int curHoras
+            String nombre,
+            String instituto,
+            String lugar,
+            int horas
     ) {
-        this.curNombre = curNombre;
-        this.curInstituto = curInstituto;
-        this.curLugar = curLugar;
-        this.curHoras = curHoras;
+        this.nombre = nombre;
+        this.instituto = instituto;
+        this.lugar = lugar;
+        this.horas = horas;
     }
     
     //GETTERS & SETTES
-    public String getCurNombre() {
-        return curNombre;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setCurNombre(String curNombre) {
-        this.curNombre = curNombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getCurInstituto() {
-        return curInstituto;
+    public String getInstituto() {
+        return instituto;
     }
 
-    public void setCurInstituto(String curInstituto) {
-        this.curInstituto = curInstituto;
+    public void setInstituto(String instituto) {
+        this.instituto = instituto;
     }
 
-    public String getCurLugar() {
-        return curLugar;
+    public String getLugar() {
+        return lugar;
     }
 
-    public void setCurLugar(String curLugar) {
-        this.curLugar = curLugar;
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
     }
 
-    public int getCurHoras() {
-        return curHoras;
+    public int getHoras() {
+        return horas;
     }
 
-    public void setCurHoras(int curHoras) {
-        this.curHoras = curHoras;
+    public void sethoras(int horas) {
+        this.horas = horas;
     }
 }

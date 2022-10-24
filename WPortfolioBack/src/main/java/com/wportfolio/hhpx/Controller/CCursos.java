@@ -24,12 +24,12 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = {"http://localhost:4200", "https://webportfolio-nl1014.web.app"})
 public class CCursos {
     @Autowired
-    SCursos serCursos;
+    SCursos SerCursos;
     
     //LISTA
     @GetMapping("/lista")
     public ResponseEntity<List<Cursos>> list() {
-        List<Cursos> list = serCursos.list();
+        List<Cursos> list = SerCursos.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
@@ -38,91 +38,91 @@ public class CCursos {
     public ResponseEntity<Cursos> getById(@PathVariable("id") int id){
         
         //VERIFICACIONES
-        if(!serCursos.existsById(id)) {
+        if(!SerCursos.existsById(id)) {
             return new ResponseEntity(new Mensaje("ID no encontrado"), HttpStatus.NOT_FOUND);
         }
         
         //OBTENCION
-        Cursos entCursos = serCursos.getOne(id).get();
-        return new ResponseEntity(entCursos, HttpStatus.OK);
+        Cursos cursos = SerCursos.getOne(id).get();
+        return new ResponseEntity(cursos, HttpStatus.OK);
     }
     
     //CREACION (NUEVO)
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody DCursos dtoCursos) {
+    public ResponseEntity<?> create(@RequestBody DCursos DtoCursos) {
         
         //VERIFICACIONES
-         if(serCursos.existsByCurNombre(dtoCursos.getCurNombre())) {
+         if(SerCursos.existsByNombre(DtoCursos.getNombre())) {
             return new ResponseEntity(new Mensaje("Registro ya existe en: Cursos"), HttpStatus.BAD_REQUEST);
         }
         
-        if(StringUtils.isBlank(dtoCursos.getCurNombre())) {
+        if(StringUtils.isBlank(DtoCursos.getNombre())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Nombre"), HttpStatus.BAD_REQUEST);
         }
         
-        if(StringUtils.isBlank(dtoCursos.getCurInstituto())) {
+        if(StringUtils.isBlank(DtoCursos.getInstituto())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Instituto"), HttpStatus.BAD_REQUEST);
         }
         
-        if(StringUtils.isBlank(dtoCursos.getCurLugar())) {
+        if(StringUtils.isBlank(DtoCursos.getLugar())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Lugar"), HttpStatus.BAD_REQUEST);
         }
         
-        if(dtoCursos.getCurHoras() <= 0) {
+        if(DtoCursos.getHoras() <= 0) {
             return new ResponseEntity(new Mensaje("Dato requerido: Horas"), HttpStatus.BAD_REQUEST);
         }
         
         //ASIGNACIONES
-        Cursos entCursos = new Cursos(
-                dtoCursos.getCurNombre(), 
-                dtoCursos.getCurInstituto(), 
-                dtoCursos.getCurLugar(),
-                dtoCursos.getCurHoras()
+        Cursos cursos = new Cursos(
+                DtoCursos.getNombre(), 
+                DtoCursos.getInstituto(), 
+                DtoCursos.getLugar(),
+                DtoCursos.getHoras()
         );
         
         //INCORPORACION
-        serCursos.save(entCursos);
+        SerCursos.save(cursos);
         return new ResponseEntity(new Mensaje("Registro incorporado a: Cursos"), HttpStatus.OK);
     }
     
     //EDICION
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody DCursos dtoCursos) {
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody DCursos DtoCursos) {
         
         //VERIFICACIONES
-        if(!serCursos.existsById(id)) {
+        if(!SerCursos.existsById(id)) {
             return new ResponseEntity(new Mensaje("ID no encontrado"), HttpStatus.NOT_FOUND);
         }
         
-        if(serCursos.existsByCurNombre(dtoCursos.getCurNombre()) && serCursos.getByCurNombre(dtoCursos.getCurNombre()).get().getId() != id) {
+        if(SerCursos.existsByNombre(DtoCursos.getNombre()) && SerCursos.getByNombre(DtoCursos.getNombre()).get().getId() != id) {
             return new ResponseEntity(new Mensaje("Registro ya existe en: Cursos"), HttpStatus.BAD_REQUEST);            
         }
 
-        if(StringUtils.isBlank(dtoCursos.getCurNombre())) {
+        if(StringUtils.isBlank(DtoCursos.getNombre())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Nombre"), HttpStatus.BAD_REQUEST);
         }
         
-        if(StringUtils.isBlank(dtoCursos.getCurInstituto())) {
+        if(StringUtils.isBlank(DtoCursos.getInstituto())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Instituto"), HttpStatus.BAD_REQUEST);
         }
         
-        if(StringUtils.isBlank(dtoCursos.getCurLugar())) {
+        if(StringUtils.isBlank(DtoCursos.getLugar())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Lugar"), HttpStatus.BAD_REQUEST);
         }
         
-        if(dtoCursos.getCurHoras() <= 0) {
+        if(DtoCursos.getHoras() <= 0) {
             return new ResponseEntity(new Mensaje("Dato requerido: Horas"), HttpStatus.BAD_REQUEST);
         }
         
         //ASIGNACIONES
-        Cursos entCursos = serCursos.getOne(id).get();
-        entCursos.setCurNombre(dtoCursos.getCurNombre());
-        entCursos.setCurInstituto(dtoCursos.getCurInstituto());
-        entCursos.setCurLugar(dtoCursos.getCurLugar());
-        entCursos.setCurHoras(dtoCursos.getCurHoras());
+        Cursos cursos = SerCursos.getOne(id).get();
+        cursos.setNombre(DtoCursos.getNombre());
+        cursos.setInstituto(DtoCursos.getInstituto());
+        cursos.setLugar(DtoCursos.getLugar());
+        cursos.setHoras(DtoCursos.getHoras());
         
         //ACTUALIZACION
-        serCursos.save(entCursos);
+        SerCursos.save(cursos);
         return new ResponseEntity(new Mensaje("Registro actualizado en: Cursos"), HttpStatus.OK);
     }
     
@@ -131,12 +131,12 @@ public class CCursos {
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
         
         //VERIFICACIONES
-        if(!serCursos.existsById(id)) {
+        if(!SerCursos.existsById(id)) {
             return new ResponseEntity(new Mensaje("ID no encontrado"), HttpStatus.NOT_FOUND);
         }
         
         //ELIMINACION
-        serCursos.delete(id);
+        SerCursos.delete(id);
         return new ResponseEntity(new Mensaje("Registro eliminado en: Cursos"), HttpStatus.OK);
     }
 }

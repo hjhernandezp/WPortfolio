@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RCursos extends JpaRepository<Cursos, Integer> {
-    public Optional<Cursos> findByCurNombre(String curNombre);
-    public boolean existsByCurNombre(String curNombre);
+    public Optional<Cursos> findByNombre(String nombre);
+    public boolean existsByNombre(String nombre);
 }

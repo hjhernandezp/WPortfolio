@@ -1,45 +1,35 @@
 package com.wportfolio.hhpx.Dto;
 
-import javax.validation.constraints.NotBlank;
-
 public class DHabilidades {
-    @NotBlank
-    private String habNombre;
-    @NotBlank
-    private int habNivel;
+    private String nombre;
+    private int nivel;
     
     //CONSTRUCTOR
     public DHabilidades() {
     }
 
     public DHabilidades(
-            String habNombre, 
-            int habNivel
+            String nombre, 
+            int nivel
     ) {
-        this.habNombre = habNombre;
-        this.habNivel = habNivel;
+        this.nombre = nombre;
+        this.nivel = nivel;
     }
     
     //GETTERS & SETTERS
-    public String getHabNombre() {
-        return habNombre;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setHabNombre(String habNombre) {
-        this.habNombre = habNombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public int getHabNivel() {
-        return habNivel;
+    public int getNivel() {
+        return nivel;
     }
 
-    public void setHabNivel(int habNivel) {
-        this.habNivel = habNivel;
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
     }
-
-    /*NO SÉ NI CÓMO NI CUANDO APARECIÓ ESTO, COMENTADO PROVISIONALMENTE, LUEGO BORRAR
-    public CharSequence getCurInstituto() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    */
 }

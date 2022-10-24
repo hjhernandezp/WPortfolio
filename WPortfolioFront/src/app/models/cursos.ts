@@ -1,19 +1,19 @@
 export class Cursos {
     id?: number;
-    curNombre: string;
-    curInstituto: string;
-    curLugar: string;
-    curHoras: number;
+    nombre: string;
+    instituto: string;
+    lugar: string;
+    horas: number;
 
     constructor(
-        curNombre: string, 
-        curInstituto: string,
-        curLugar: string, 
-        curHoras: number
+        nombre: string, 
+        instituto: string,
+        lugar: string, 
+        horas: number
     ) {
-        this.curNombre = curNombre;
-        this.curInstituto = curInstituto;
-        this.curLugar = curLugar;
-        this.curHoras = curHoras;
+        this.nombre = nombre;
+        this.instituto = instituto;
+        this.lugar = lugar;
+        this.horas = horas;
     }
 }

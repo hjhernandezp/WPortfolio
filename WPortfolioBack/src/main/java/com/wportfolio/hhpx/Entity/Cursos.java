@@ -4,32 +4,37 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Cursos {
-    //CUR -> CURSOS
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String curNombre;
-    private String curInstituto;
-    private String curLugar;
-    private int curHoras;
+    @NotNull
+    @Size(min = 1, max = 100, message = "Máximo 100 caracteres")
+    private String nombre;
+    @NotNull
+    @Size(min = 1, max = 100, message = "Máximo 100 caracteres")
+    private String instituto;
+    private String lugar;
+    private int horas;
     
     //CONSTRUCTOR
     public Cursos() {
     }
 
     public Cursos(
-            String curNombre, 
-            String curInstituto, 
-            String curLugar, 
-            int curHoras
+            String nombre, 
+            String instituto, 
+            String lugar, 
+            int horas
     ) {
-        this.curNombre = curNombre;
-        this.curInstituto = curInstituto;
-        this.curLugar = curLugar;
-        this.curHoras = curHoras;
+        this.nombre = nombre;
+        this.instituto = instituto;
+        this.lugar = lugar;
+        this.horas = horas;
     }
     
     //GETTERS & SETTERS
@@ -41,36 +46,35 @@ public class Cursos {
         this.id = id;
     }
 
-    public String getCurNombre() {
-        return curNombre;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setCurNombre(String curNombre) {
-        this.curNombre = curNombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getCurInstituto() {
-        return curInstituto;
+    public String getInstituto() {
+        return instituto;
     }
 
-    public void setCurInstituto(String curInstituto) {
-        this.curInstituto = curInstituto;
+    public void setInstituto(String instituto) {
+        this.instituto = instituto;
     }
 
-    public String getCurLugar() {
-        return curLugar;
+    public String getLugar() {
+        return lugar;
     }
 
-    public void setCurLugar(String curLugar) {
-        this.curLugar = curLugar;
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
     }
 
-    public int getCurHoras() {
-        return curHoras;
+    public int getHoras() {
+        return horas;
     }
 
-    public void setCurHoras(int curHoras) {
-        this.curHoras = curHoras;
+    public void setHoras(int horas) {
+        this.horas = horas;
     }
-
 }

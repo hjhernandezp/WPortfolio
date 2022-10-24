@@ -1,22 +1,22 @@
 export class Estudios {
     id?: number;
-    estCarrera: string;
-    estMencion: string;
-    estEstado: string;
-    estInstituto: string;
-    estLugar: string;
+    carrera: string;
+    mencion: string;
+    estado: string;
+    instituto: string;
+    lugar: string;
 
     constructor(
-        estCarrera: string, 
-        estMencion: string, 
-        estEstado: string,
-        estInstituto: string,
-        estLugar: string
+        carrera: string, 
+        mencion: string, 
+        estado: string,
+        instituto: string,
+        lugar: string
     ) {
-        this.estCarrera = estCarrera;
-        this.estMencion = estMencion;
-        this.estEstado = estEstado;
-        this.estInstituto = estInstituto;
-        this.estLugar = estLugar;
+        this.carrera = carrera;
+        this.mencion = mencion;
+        this.estado = estado;
+        this.instituto = instituto;
+        this.lugar = lugar;
     }
 }

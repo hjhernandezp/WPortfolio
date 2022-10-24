@@ -1,76 +1,68 @@
 package com.wportfolio.hhpx.Dto;
 
-import javax.validation.constraints.NotBlank;
-
 public class DEstudios {
-    @NotBlank
-    private String estCarrera;
-    @NotBlank
-    private String estMencion;
-    @NotBlank
-    private String estEstado;
-    @NotBlank
-    private String estInstituto;
-    @NotBlank
-    private String estLugar;
+    private String carrera;
+    private String mencion;
+    private String estado;
+    private String instituto;
+    private String lugar;
     
-    //Constructor
+    //CONTRUCTOR
     public DEstudios() {
     }
 
     public DEstudios(
-            String estCarrera, 
-            String estMencion, 
-            String estEstado, 
-            String estInstituto, 
-            String estLugar
+            String carrera, 
+            String mencion, 
+            String estado, 
+            String instituto, 
+            String lugar
     ) {
-        this.estCarrera = estCarrera;
-        this.estMencion = estMencion;
-        this.estEstado = estEstado;
-        this.estInstituto = estInstituto;
-        this.estLugar = estLugar;
+        this.carrera = carrera;
+        this.mencion = mencion;
+        this.estado = estado;
+        this.instituto = instituto;
+        this.lugar = lugar;
     }
 
-    //Getters & Setters
-    public String getEstCarrera() {
-        return estCarrera;
+    //GETTERS & SETTERS
+    public String getCarrera() {
+        return carrera;
     }
 
-    public void setEstCarrera(String estCarrera) {
-        this.estCarrera = estCarrera;
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
     }
 
-    public String getEstMencion() {
-        return estMencion;
+    public String getMencion() {
+        return mencion;
     }
 
-    public void setEstMencion(String estMencion) {
-        this.estMencion = estMencion;
+    public void setMencion(String mencion) {
+        this.mencion = mencion;
     }
 
-    public String getEstEstado() {
-        return estEstado;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setEstEstado(String estEstado) {
-        this.estEstado = estEstado;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
-    public String getEstInstituto() {
-        return estInstituto;
+    public String getInstituto() {
+        return instituto;
     }
 
-    public void setEstInstituto(String estInstituto) {
-        this.estInstituto = estInstituto;
+    public void setInstituto(String instituto) {
+        this.instituto = instituto;
     }
 
-    public String getEstLugar() {
-        return estLugar;
+    public String getLugar() {
+        return lugar;
     }
 
-    public void setEstLugar(String estLugar) {
-        this.estLugar = estLugar;
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
     }
-
 }

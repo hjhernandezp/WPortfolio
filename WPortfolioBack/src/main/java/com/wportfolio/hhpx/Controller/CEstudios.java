@@ -24,12 +24,12 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = {"http://localhost:4200", "https://webportfolio-nl1014.web.app"})
 public class CEstudios {
     @Autowired
-    SEstudios serEstudios;
+    SEstudios SerEstudios;
     
     //LISTA
     @GetMapping("/lista")
     public ResponseEntity<List<Estudios>> list() {
-        List<Estudios> list = serEstudios.list();
+        List<Estudios> list = SerEstudios.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
@@ -38,101 +38,101 @@ public class CEstudios {
     public ResponseEntity<Estudios> getById(@PathVariable("id") int id){
         
         //VERIFICACIONES
-        if(!serEstudios.existsById(id)) {
+        if(!SerEstudios.existsById(id)) {
             return new ResponseEntity(new Mensaje("ID no encontrado"), HttpStatus.NOT_FOUND);
         }
         
         //OBTENCION
-        Estudios entEstudios = serEstudios.getOne(id).get();
-        return new ResponseEntity(entEstudios, HttpStatus.OK);
+        Estudios estudios = SerEstudios.getOne(id).get();
+        return new ResponseEntity(estudios, HttpStatus.OK);
     }
     
     //CREACION (NUEVO)
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody DEstudios dtoEstudios) {
+    public ResponseEntity<?> create(@RequestBody DEstudios DtoEstudios) {
         
         //VERIFICACIONES
-         if(serEstudios.existsByEstCarrera(dtoEstudios.getEstCarrera())) {
+         if(SerEstudios.existsByCarrera(DtoEstudios.getCarrera())) {
             return new ResponseEntity(new Mensaje("Registro ya existe en: Estudios"), HttpStatus.BAD_REQUEST);
         }
         
-        if(StringUtils.isBlank(dtoEstudios.getEstCarrera())) {
+        if(StringUtils.isBlank(DtoEstudios.getCarrera())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Carrera"), HttpStatus.BAD_REQUEST);
         }
         
-        if(StringUtils.isBlank(dtoEstudios.getEstMencion())) {
+        if(StringUtils.isBlank(DtoEstudios.getMencion())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Mención"), HttpStatus.BAD_REQUEST);
         }
         
-        if(StringUtils.isBlank(dtoEstudios.getEstEstado())) {
+        if(StringUtils.isBlank(DtoEstudios.getEstado())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Estado"), HttpStatus.BAD_REQUEST);
         }
         
-        if(StringUtils.isBlank(dtoEstudios.getEstInstituto())) {
+        if(StringUtils.isBlank(DtoEstudios.getInstituto())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Instituto"), HttpStatus.BAD_REQUEST);
         }
         
-        if(StringUtils.isBlank(dtoEstudios.getEstLugar())) {
+        if(StringUtils.isBlank(DtoEstudios.getLugar())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Lugar"), HttpStatus.BAD_REQUEST);
         }
         
         //ASIGNACIONES
-        Estudios entEstudios = new Estudios(
-                dtoEstudios.getEstCarrera(), 
-                dtoEstudios.getEstMencion(), 
-                dtoEstudios.getEstEstado(),
-                dtoEstudios.getEstInstituto(),
-                dtoEstudios.getEstLugar()
+        Estudios estudios = new Estudios(
+                DtoEstudios.getCarrera(), 
+                DtoEstudios.getMencion(), 
+                DtoEstudios.getEstado(),
+                DtoEstudios.getInstituto(),
+                DtoEstudios.getLugar()
         );
         
         //INCORPORACION
-        serEstudios.save(entEstudios);
+        SerEstudios.save(estudios);
         return new ResponseEntity(new Mensaje("Registro incorporado a: Estudios"), HttpStatus.OK);
     }
     
     //EDICION
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody DEstudios dtoEstudios) {
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody DEstudios DtoEstudios) {
         
         //VERIFICACIONES
-        if(!serEstudios.existsById(id)) {
+        if(!SerEstudios.existsById(id)) {
             return new ResponseEntity(new Mensaje("ID no encontrado"), HttpStatus.NOT_FOUND);
         }
         
-        if(serEstudios.existsByEstCarrera(dtoEstudios.getEstCarrera()) && serEstudios.getByEstCarrera(dtoEstudios.getEstCarrera()).get().getId() != id) {
+        if(SerEstudios.existsByCarrera(DtoEstudios.getCarrera()) && SerEstudios.getByCarrera(DtoEstudios.getCarrera()).get().getId() != id) {
             return new ResponseEntity(new Mensaje("Registro ya existe en: Estudios"), HttpStatus.BAD_REQUEST);
         }
         
-        if(StringUtils.isBlank(dtoEstudios.getEstCarrera())) {
+        if(StringUtils.isBlank(DtoEstudios.getCarrera())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Carrera"), HttpStatus.BAD_REQUEST);
         }
         
-        if(StringUtils.isBlank(dtoEstudios.getEstMencion())) {
+        if(StringUtils.isBlank(DtoEstudios.getMencion())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Mención"), HttpStatus.BAD_REQUEST);
         }
         
-        if(StringUtils.isBlank(dtoEstudios.getEstEstado())) {
+        if(StringUtils.isBlank(DtoEstudios.getEstado())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Estado"), HttpStatus.BAD_REQUEST);
         }
         
-        if(StringUtils.isBlank(dtoEstudios.getEstInstituto())) {
+        if(StringUtils.isBlank(DtoEstudios.getInstituto())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Instituto"), HttpStatus.BAD_REQUEST);
         }
         
-        if(StringUtils.isBlank(dtoEstudios.getEstLugar())) {
+        if(StringUtils.isBlank(DtoEstudios.getLugar())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Lugar"), HttpStatus.BAD_REQUEST);
         }
         
         //ASIGNACIONES
-        Estudios entEstudios = serEstudios.getOne(id).get();
-        entEstudios.setEstCarrera(dtoEstudios.getEstCarrera());
-        entEstudios.setEstMencion(dtoEstudios.getEstMencion());
-        entEstudios.setEstEstado(dtoEstudios.getEstEstado());
-        entEstudios.setEstInstituto(dtoEstudios.getEstInstituto());
-        entEstudios.setEstLugar(dtoEstudios.getEstLugar());
+        Estudios estudios = SerEstudios.getOne(id).get();
+        estudios.setCarrera(DtoEstudios.getCarrera());
+        estudios.setMencion(DtoEstudios.getMencion());
+        estudios.setEstado(DtoEstudios.getEstado());
+        estudios.setInstituto(DtoEstudios.getInstituto());
+        estudios.setLugar(DtoEstudios.getLugar());
         
         //ACTUALIZACION
-        serEstudios.save(entEstudios);
+        SerEstudios.save(estudios);
         return new ResponseEntity(new Mensaje("Registro actualizado en: Estudios"), HttpStatus.OK);
     }
     
@@ -141,13 +141,12 @@ public class CEstudios {
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
         
         //VERIFICACIONES
-        if(!serEstudios.existsById(id)) {
+        if(!SerEstudios.existsById(id)) {
             return new ResponseEntity(new Mensaje("ID no encontrado"), HttpStatus.NOT_FOUND);
         }
         
         //ELIMINACION
-        serEstudios.delete(id);
+        SerEstudios.delete(id);
         return new ResponseEntity(new Mensaje("Registro eliminado en: Estudios"), HttpStatus.OK);
     }
-    
 }

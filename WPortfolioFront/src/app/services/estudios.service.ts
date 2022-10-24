@@ -8,27 +8,27 @@ import { Estudios } from '../models/estudios';
   providedIn: 'root'
 })
 export class EstudiosService {
-  URLest = environment.URL + '/estudios';
+  URLService = environment.URL + '/estudios';
 
   constructor(private httpx: HttpClient) { }
 
   public lista(): Observable<Estudios[]> {
-    return this.httpx.get<Estudios[]>(this.URLest + '/lista');
+    return this.httpx.get<Estudios[]>(this.URLService + '/lista');
   }
 
   public detail(id: number): Observable<Estudios> {
-    return this.httpx.get<Estudios>(this.URLest + `/detail/${id}`);
+    return this.httpx.get<Estudios>(this.URLService + `/detail/${id}`);
   }
 
   public save(estudios: Estudios): Observable<any> {
-    return this.httpx.post<any>(this.URLest + '/create', estudios);
+    return this.httpx.post<any>(this.URLService + '/create', estudios);
   }
 
   public update(id: number, estudios: Estudios): Observable<any> {
-    return this.httpx.put<any>(this.URLest + `/update/${id}`, estudios);
+    return this.httpx.put<any>(this.URLService + `/update/${id}`, estudios);
   }
 
   public delete(id: number): Observable<any> {
-    return this.httpx.delete<any>(this.URLest + `/delete/${id}`);
+    return this.httpx.delete<any>(this.URLService + `/delete/${id}`);
   }
 }

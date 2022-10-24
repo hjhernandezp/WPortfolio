@@ -8,27 +8,27 @@ import { Habilidades } from '../models/habilidades';
   providedIn: 'root'
 })
 export class HabilidadesService {
-  URLhab = environment.URL + '/habilidades';
+  URLService = environment.URL + '/habilidades';
 
   constructor(private httpx: HttpClient) { }
 
   public lista(): Observable<Habilidades[]> {
-    return this.httpx.get<Habilidades[]>(this.URLhab + '/lista');
+    return this.httpx.get<Habilidades[]>(this.URLService + '/lista');
   }
 
   public detail(id: number): Observable<Habilidades> {
-    return this.httpx.get<Habilidades>(this.URLhab + `/detail/${id}`);
+    return this.httpx.get<Habilidades>(this.URLService + `/detail/${id}`);
   }
 
   public save(habilidades: Habilidades): Observable<any> {
-    return this.httpx.post<any>(this.URLhab + '/create', habilidades);
+    return this.httpx.post<any>(this.URLService + '/create', habilidades);
   }
 
   public update(id: number, habilidades: Habilidades): Observable<any> {
-    return this.httpx.put<any>(this.URLhab+ `/update/${id}`, habilidades);
+    return this.httpx.put<any>(this.URLService+ `/update/${id}`, habilidades);
   }
 
   public delete(id: number): Observable<any> {
-    return this.httpx.delete<any>(this.URLhab + `/delete/${id}`);
+    return this.httpx.delete<any>(this.URLService + `/delete/${id}`);
   }
 }

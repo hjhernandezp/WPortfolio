@@ -8,32 +8,31 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-public class Persona {
+public class Proyectos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotNull
-    @Size(min = 1, max = 50, message = "Máximo 50 caracteres")
+    @Size(min = 1, max = 100, message = "Máximo 100 caracteres")
     private String nombre;
     @NotNull
-    @Size(min = 1, max = 50, message = "Máximo 50 caracteres")
-    private String apellido;
     private String descripcion;
+    private String enlace;
     private String imagen;
-
+    
     //CONSTRUCTOR
-    public Persona() {
+    public Proyectos() {
     }
 
-    public Persona(
+    public Proyectos(
             String nombre, 
-            String apellido, 
             String descripcion, 
+            String enlace,
             String imagen
     ) {
         this.nombre = nombre;
-        this.apellido = apellido;
         this.descripcion = descripcion;
+        this.enlace = enlace;
         this.imagen = imagen;
     }
     
@@ -54,20 +53,19 @@ public class Persona {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
     public String getDescripcion() {
         return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+    
+    public String getEnlace() { 
+        return enlace;
+    }
+    public void setEnlace(String enlace) {
+        this.enlace = enlace;
     }
 
     public String getImagen() {

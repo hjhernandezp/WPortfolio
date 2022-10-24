@@ -24,12 +24,12 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = {"http://localhost:4200", "https://webportfolio-nl1014.web.app"})
 public class CHabilidades {
     @Autowired
-    SHabilidades serHabilidades;
+    SHabilidades SerHabilidades;
     
     //LISTA
     @GetMapping("/lista")
     public ResponseEntity<List<Habilidades>> list() {
-        List<Habilidades> list = serHabilidades.list();
+        List<Habilidades> list = SerHabilidades.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
@@ -38,71 +38,71 @@ public class CHabilidades {
     public ResponseEntity<Habilidades> getById(@PathVariable("id") int id){
         
         //VERIFICACIONES
-        if(!serHabilidades.existsById(id)) {
+        if(!SerHabilidades.existsById(id)) {
             return new ResponseEntity(new Mensaje("ID no encontrado"), HttpStatus.NOT_FOUND);
         }
         
         //OBTENCION
-        Habilidades entHabilidades = serHabilidades.getOne(id).get();
-        return new ResponseEntity(entHabilidades, HttpStatus.OK);
+        Habilidades habilidades = SerHabilidades.getOne(id).get();
+        return new ResponseEntity(habilidades, HttpStatus.OK);
     }
 
     //CREACION (NUEVO)
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody DHabilidades dtoHabilidades) {
+    public ResponseEntity<?> create(@RequestBody DHabilidades DtoHabilidades) {
         
         //VERIFICACIONES
-         if(serHabilidades.existsByHabNombre(dtoHabilidades.getHabNombre())) {
+         if(SerHabilidades.existsByNombre(DtoHabilidades.getNombre())) {
             return new ResponseEntity(new Mensaje("Registro ya existe en: Habilidades"), HttpStatus.BAD_REQUEST);
         }
         
-        if(StringUtils.isBlank(dtoHabilidades.getHabNombre())) {
+        if(StringUtils.isBlank(DtoHabilidades.getNombre())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Nombre"), HttpStatus.BAD_REQUEST);
         }
         
-        if(dtoHabilidades.getHabNivel() <= 0) {
+        if(DtoHabilidades.getNivel() <= 0) {
             return new ResponseEntity(new Mensaje("Dato requerido: Nivel"), HttpStatus.BAD_REQUEST);
         }
         
         //ASIGNACIONES
-        Habilidades entHabilidades = new Habilidades(
-                dtoHabilidades.getHabNombre(), 
-                dtoHabilidades.getHabNivel()
+        Habilidades habilidades = new Habilidades(
+                DtoHabilidades.getNombre(), 
+                DtoHabilidades.getNivel()
         );
         
         //INCORPORACION
-        serHabilidades.save(entHabilidades);
+        SerHabilidades.save(habilidades);
         return new ResponseEntity(new Mensaje("Registro incorporado a: Habilidades"), HttpStatus.OK);
     }
     
     //EDICION
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody DHabilidades dtoHabilidades) {
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody DHabilidades DtoHabilidades) {
         
         //VERIFICACIONES
-        if(!serHabilidades.existsById(id)) {
+        if(!SerHabilidades.existsById(id)) {
             return new ResponseEntity(new Mensaje("ID no encontrado"), HttpStatus.NOT_FOUND);
         }
         
-        if(serHabilidades.existsByHabNombre(dtoHabilidades.getHabNombre()) && serHabilidades.getByHabNombre(dtoHabilidades.getHabNombre()).get().getId() != id) {
+        if(SerHabilidades.existsByNombre(DtoHabilidades.getNombre()) && SerHabilidades.getByNombre(DtoHabilidades.getNombre()).get().getId() != id) {
             return new ResponseEntity(new Mensaje("Registro ya existe en: Habilidades"), HttpStatus.BAD_REQUEST);
         }
 
-        if(StringUtils.isBlank(dtoHabilidades.getHabNombre())) {
+        if(StringUtils.isBlank(DtoHabilidades.getNombre())) {
             return new ResponseEntity(new Mensaje("Dato requerido: Nombre"), HttpStatus.BAD_REQUEST);
         }
         
-        if(dtoHabilidades.getHabNivel() <= 0) {
+        if(DtoHabilidades.getNivel() <= 0) {
             return new ResponseEntity(new Mensaje("Dato requerido: Nivel"), HttpStatus.BAD_REQUEST);
         }
         
         //ASIGNACIONES
-        Habilidades entHabilidades = serHabilidades.getOne(id).get();
-        entHabilidades.setHabNombre(dtoHabilidades.getHabNombre());
-        entHabilidades.setHabNivel(dtoHabilidades.getHabNivel());
+        Habilidades habilidades = SerHabilidades.getOne(id).get();
+        habilidades.setNombre(DtoHabilidades.getNombre());
+        habilidades.setNivel(DtoHabilidades.getNivel());
         
         //ACTUALIZACION
-        serHabilidades.save(entHabilidades);
+        SerHabilidades.save(habilidades);
         return new ResponseEntity(new Mensaje("Registro actualizado en: Habilidades"), HttpStatus.OK);
     }
     
@@ -111,13 +111,12 @@ public class CHabilidades {
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
         
         //VERIFICACIONES
-        if(!serHabilidades.existsById(id)) {
+        if(!SerHabilidades.existsById(id)) {
             return new ResponseEntity(new Mensaje("ID no encontrado"), HttpStatus.NOT_FOUND);
         }
         
         //ELIMINACION
-        serHabilidades.delete(id);
+        SerHabilidades.delete(id);
         return new ResponseEntity(new Mensaje("Registro eliminado en: Habilidades"), HttpStatus.OK);
     }
-
 }

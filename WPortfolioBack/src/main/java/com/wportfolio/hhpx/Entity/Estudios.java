@@ -4,39 +4,43 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Estudios {
-    
-    //EST -> ESTUDIOS
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String estCarrera;
-    private String estMencion;
-    private String estEstado;
-    private String estInstituto;
-    private String estLugar;
+    @NotNull
+    @Size(min = 1, max = 100, message = "Máximo 100 caracteres")
+    private String carrera;
+    @NotNull
+    @Size(min = 1, max = 100, message = "Máximo 100 caracteres")
+    private String mencion;
+    private String estado;
+    private String instituto;
+    private String lugar;
    
-    //Constructor
+    //CONSTRUCTOR
     public Estudios() {
     }
 
     public Estudios(
-            String eduCarrera, 
-            String eduMencion, 
-            String eduEstado, 
-            String eduInstituto, 
-            String eduLugar
+            String carrera, 
+            String mencion, 
+            String estado, 
+            String instituto, 
+            String lugar
     ) {
-        this.estCarrera = eduCarrera;
-        this.estMencion = eduMencion;
-        this.estEstado = eduEstado;
-        this.estInstituto = eduInstituto;
-        this.estLugar = eduLugar;
+        this.carrera = carrera;
+        this.mencion = mencion;
+        this.estado = estado;
+        this.instituto = instituto;
+        this.lugar = lugar;
     }
 
-    //Getters & Setters
+    //GETTERS & SETTERS
     public int getId() {
         return id;
     }
@@ -45,44 +49,43 @@ public class Estudios {
         this.id = id;
     }
 
-    public String getEstCarrera() {
-        return estCarrera;
+    public String getCarrera() {
+        return carrera;
     }
 
-    public void setEstCarrera(String estCarrera) {
-        this.estCarrera = estCarrera;
+    public void setCarrera(String estcarrera) {
+        this.carrera = carrera;
     }
 
-    public String getEstMencion() {
-        return estMencion;
+    public String getMencion() {
+        return mencion;
     }
 
-    public void setEstMencion(String estMencion) {
-        this.estMencion = estMencion;
+    public void setMencion(String mencion) {
+        this.mencion = mencion;
     }
 
-    public String getEstEstado() {
-        return estEstado;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setEstEstado(String estEstado) {
-        this.estEstado = estEstado;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
-    public String getEstInstituto() {
-        return estInstituto;
+    public String getInstituto() {
+        return instituto;
     }
 
-    public void setEstInstituto(String estInstituto) {
-        this.estInstituto = estInstituto;
+    public void setInstituto(String instituto) {
+        this.instituto = instituto;
     }
 
-    public String getEstLugar() {
-        return estLugar;
+    public String getLugar() {
+        return lugar;
     }
 
-    public void setEstLugar(String estLugar) {
-        this.estLugar = estLugar;
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
     }
-    
 }

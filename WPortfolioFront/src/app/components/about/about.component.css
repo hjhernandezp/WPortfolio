@@ -1,16 +1,20 @@
 #AreaAbout{
     width: auto;
     height: auto;
-    background-color: #B0C4DE;
-    padding: 12px;
+    padding: 6px;
 }
 
 #SeccionAbout1 {
-    text-align: center;
+    align-items: center;
     margin-bottom: 6px;
 }
 
 #SeccionAbout2 {
+    text-align: left;
+    margin-bottom: 6px;
+}
+
+#SeccionAbout3 {
     text-align: justify;
     margin-bottom: 6px;
 }
@@ -18,9 +22,8 @@
 #FotoPerfil {
     box-shadow: 3px 3px 3px #696969;
     border-radius: 100%;
-    width: 90%;
-    margin-top: -50%;
-    margin-bottom: 12px;
+    width: 72%;
+    margin-bottom: 6px;
 }
 
 @media (max-width: 575px) {

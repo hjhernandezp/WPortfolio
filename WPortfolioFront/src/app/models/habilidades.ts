@@ -1,13 +1,13 @@
 export class Habilidades {
     id?: number;
-    habNombre: string;
-    habNivel: number;
+    nombre: string;
+    nivel: number;
     
     constructor(
-        habNombre: string,
-        habNivel: number
+        nombre: string,
+        nivel: number
     ) {
-        this.habNombre = habNombre;
-        this.habNivel = habNivel;
+        this.nombre = nombre;
+        this.nivel = nivel;
     }
 }

@@ -1,14 +1,16 @@
+<!-- Cuerpo Princpal -->
 <div class="row">
     <h3>
         Habilidades
-        <button type="button" class="btn btn-dark" routerLink="/habilidades-add" *ngIf="isLogged">
+        <button type="button" class="btn btn-dark" 
+            (click)="openModal(Add)" *ngIf="isLogged">
             <i class="bi bi-plus-circle"></i>
         </button>
     </h3>
-    <div class="text-center col-sm-3 col-md-3 col-lg-3 circulo" *ngFor="let Habilidades of habilidades">
+    <div class="text-center col-sm-3 col-md-3 col-lg-3 circulo" *ngFor="let campo of arreglo">
         <circle-progress
-            [title]="(Habilidades.habNombre)"
-            [percent]="(Habilidades.habNivel)"
+            [title]="(campo.nombre)"
+            [percent]="(campo.nivel)"
             [radius]="64"
             [titleFontSize]="'1.1em'"
             [showSubtitle]="false"
@@ -23,15 +25,79 @@
         ></circle-progress>
         <div class="botones">    
             <td *ngIf="isLogged">
-                <button type="button" class="btn btn-success" routerLink="/habilidades-mod/{{Habilidades.id}}">
+                <button type="button" class="btn btn-success" 
+                    (click)="onLocate(campo.id, Mod)">
                     <i class="bi bi-pencil-fill"></i>
                 </button>
             </td>
             <td *ngIf="isLogged">
-                <button type="button" class="btn btn-danger" (click)="deleteHabilidades(Habilidades.id)">
+                <button type="button" class="btn btn-danger" 
+                    (click)="onDelete(campo.id)">
                     <i class="bi bi-trash"></i>
                 </button>
             </td>
         </div>
     </div>
 </div>
+
+<ng-template #Add let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Añadir Habilidades</h4>     
+        <button type="button" class="close" aria-label="close" 
+            (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+            <div class="form-group">
+                <label for="nombre">Habilidad</label>
+                <input type="text" class="form-control" 
+                    id="nombre" name="nombre" 
+                    [(ngModel)]="nombre" required />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label for="nivel">Nivel</label>
+                <input type="number" class="form-control" 
+                    id="nivel" name="nivel" 
+                    [(ngModel)]="nivel" required />
+            </div>
+            <p></p>
+            <button type="submit" class="btn btn-success" 
+                (click)="modal.close()">Añadir
+            </button>
+        </form>
+    </div>
+</ng-template>
+
+<ng-template #Mod let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Editar Habilidades</h4>     
+        <button type="button" class="close" aria-label="close" 
+            (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form (ngSubmit)="onUpdate(objeto.id)" novalidate #f="ngForm">
+            <div class="form-group">
+                <label for="nombre">Habilidad</label>
+                <input type="text" class="form-control" 
+                    id="nombre" name="nombre" 
+                    [(ngModel)]="objeto.nombre" required />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label for="nivel">Nivel</label>
+                <input type="number" class="form-control" 
+                    id="nivel" name="nivel" 
+                    [(ngModel)]="objeto.nivel" required />
+            </div>
+            <p></p>
+            <button type="submit" class="btn btn-success" 
+                (click)="modal.close()">Actualizar
+            </button>
+        </form>
+    </div>
+</ng-template>

@@ -1,12 +1,20 @@
 #AreaBanner {
     width: auto;
     background-image: url("../../../assets/Banner006.jpg");
-    min-height: 180px;
+    min-height: 200px;
 }
 
 #SeccionTitulo {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #FFFFFF;
-    text-align: center;
-    margin-top: 1em;
+    text-align: left;
+    margin-top: 0.5em;
+}
+
+h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: white;
 }

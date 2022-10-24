@@ -1,28 +1,28 @@
 package com.wportfolio.hhpx.Dto;
 
-public class DPersona {
+public class DProyectos {
     private String nombre;
-    private String apellido;
     private String descripcion;
+    private String enlace;
     private String imagen;
     
     //CONSTRUCTOR
-    public DPersona() {
+    public DProyectos() {
     }
 
-    public DPersona(
+    public DProyectos(
             String nombre, 
-            String apellido, 
             String descripcion, 
+            String enlace,
             String imagen
     ) {
         this.nombre = nombre;
-        this.apellido = apellido;
         this.descripcion = descripcion;
+        this.enlace = enlace;
         this.imagen = imagen;
     }
-
-    //GETTERS & SETTES
+    
+    //GETTERS & SETTERS
     public String getNombre() {
         return nombre;
     }
@@ -31,20 +31,20 @@ public class DPersona {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
     public String getDescripcion() {
         return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+    
+    public String getEnlace() {
+        return enlace;
+    }
+
+    public void setEnlace(String enlace) {
+        this.enlace = enlace;
     }
 
     public String getImagen() {
