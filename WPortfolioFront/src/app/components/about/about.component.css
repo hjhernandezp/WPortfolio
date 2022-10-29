@@ -29,7 +29,7 @@
 @media (max-width: 575px) {
     #FotoPerfil {
         width: 100px;
-        margin-top: -12%;
+        margin-top: 0;
     }
     #SeccionAbout1, #SeccionAbout2 {
         text-align: center;

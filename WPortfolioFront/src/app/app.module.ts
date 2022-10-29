@@ -18,7 +18,6 @@ import { EstudiosComponent } from './components/estudios/estudios.component';
 import { ExperienciaComponent } from './components/experiencia/experiencia.component';
 import { CursosComponent } from './components/cursos/cursos.component';
 import { HabilidadesComponent } from './components/habilidades/habilidades.component';
-import { AboutModComponent } from './components/about/about-mod.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
@@ -41,8 +40,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     EstudiosComponent,
     ExperienciaComponent,
     CursosComponent,
-    HabilidadesComponent,
-    AboutModComponent, 
+    HabilidadesComponent, 
     ProyectosComponent
   ],
   imports: [

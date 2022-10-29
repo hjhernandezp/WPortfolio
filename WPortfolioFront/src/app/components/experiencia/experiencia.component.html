@@ -1,9 +1,9 @@
 <!-- Cuerpo Princpal -->
-<div>
+<div class="container-fluid table-responsive">
     <h3>
         Experiencia Laboral
         <button type="button" class="btn btn-dark" 
-            (click)="openModal(Add)" *ngIf="isLogged">
+            (click)="onModal(Add)" *ngIf="isLogged">
             <i class="bi bi-plus-circle"></i>
         </button>
     </h3>
@@ -13,8 +13,8 @@
                 <th>Empresa</th>
                 <th>Lugar</th>
                 <th>Cargo</th>
-                <th>---</th>
-                <th>---</th>
+                <th *ngIf="isLogged">---</th>
+                <th *ngIf="isLogged">---</th>
             </tr>
             <tr *ngFor="let campo of arreglo">
                 <td>{{campo.empresa}}</td>
@@ -86,7 +86,7 @@
         </button>
     </div>
     <div class="modal-body">
-        <form (ngSubmit)="onUpdate(objeto.id)" novalidate #f="ngForm">
+        <form (ngSubmit)="onUpdate(objeto.id)" novalidate #f="ngForm" *ngIf="objeto">
             <div class="form-group">
                 <label for="empresa">Empresa</label>
                 <input type="text" class="form-control" 

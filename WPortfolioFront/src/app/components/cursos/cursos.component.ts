@@ -11,6 +11,12 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class CursosComponent implements OnInit {
   
+  constructor(
+    private SerComponent: CursosService, 
+    private SerToken: TokenService,
+    private SerModal: NgbModal
+  ) { }
+  
   //ARREGLO Y OBJETO
   arreglo: Cursos[] = [];
   objeto: Cursos = null;
@@ -24,12 +30,6 @@ export class CursosComponent implements OnInit {
   //HABILITANTE
   isLogged = false;
 
-  constructor(
-    private ComService: CursosService, 
-    private SerToken: TokenService,
-    private ModalService: NgbModal
-  ) { }
-
   ngOnInit(): void {
     this.onLoad();
     if(this.SerToken.getToken()) {
@@ -40,7 +40,7 @@ export class CursosComponent implements OnInit {
   }
 
   onLoad(): void {
-    this.ComService.lista().subscribe(
+    this.SerComponent.lista().subscribe(
       data => {
         this.arreglo = data
       }
@@ -54,15 +54,15 @@ export class CursosComponent implements OnInit {
     this.horas = null;
   }
 
-  onLocate(id: number, referencia: any) {
-    this.ComService.detail(id).subscribe(
+  onLocate(id: number, guia: any): void {
+    this.SerComponent.detail(id).subscribe(
       data => {
         this.objeto = data
       }, err => {
         alert("Error de sistema")
       }
     )
-    this.ModalService.open(referencia)
+    this.SerModal.open(guia)
   }
 
   onCreate(): void {
@@ -72,10 +72,10 @@ export class CursosComponent implements OnInit {
       this.lugar,
       this.horas
     );
-    this.ComService.save(cursos).subscribe(
+    this.SerComponent.save(cursos).subscribe(
       data => {
-        this.onLoad()
-        this.onReset()
+        /* this.onLoad()
+        this.onReset() */
         alert("Registro añadido correctamente en: Cursos")
       }, err=> {
         alert("Error de sistema al añadir: Cursos")
@@ -84,7 +84,7 @@ export class CursosComponent implements OnInit {
   }
 
   onUpdate(id: number): void {
-    this.ComService.update(id, this.objeto).subscribe(
+    this.SerComponent.update(id, this.objeto).subscribe(
       data => {
         this.onLoad()
         alert("Registro actualizado en: Cursos")
@@ -94,20 +94,22 @@ export class CursosComponent implements OnInit {
     );
   }
 
-  onDelete(id: number) {
+  onDelete(id: number): void{
     if(id != undefined) {
-      this.ComService.delete(id).subscribe(
-        data => {
-          this.onLoad()
-          alert("Registro eliminado en: Cursos")
-        }, err => {
-          alert("Error de sistema al borrar: Cursos")
-        }
-      );
+      if(window.confirm("¿Desea borrar el registro?")) {
+        this.SerComponent.delete(id).subscribe(
+          data => {
+            this.onLoad()
+            alert("Registro eliminado en: Cursos")
+          }, err => {
+            alert("Error de sistema al borrar: Cursos")
+          }
+        );
+      }
     }
   }
 
-  openModal(referencia: any) {
-    this.ModalService.open(referencia)
+  onModal(guia: any): void {
+    this.SerModal.open(guia)
   }
 }

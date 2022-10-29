@@ -1,9 +1,9 @@
 <!-- Cuerpo Princpal -->
-<div>
+<div class="container-fluid table-responsive">
     <h3>
         Estudios Realizados
         <button type="button" class="btn btn-dark" 
-            (click)="openModal(Add)" *ngIf="isLogged">
+            (click)="onModal(Add)" *ngIf="isLogged">
             <i class="bi bi-plus-circle"></i>
         </button>
     </h3>
@@ -15,8 +15,8 @@
                 <th>Estado</th>
                 <th>Instituo</th>
                 <th>Lugar</th>
-                <th>---</th>
-                <th>---</th>
+                <th *ngIf="isLogged">---</th>
+                <th *ngIf="isLogged">---</th>
             </tr>
             <tr *ngFor="let campo of arreglo">
                 <td>{{campo.carrera}}</td>
@@ -104,7 +104,7 @@
         </button>
     </div>
     <div class="modal-body">
-        <form (ngSubmit)="onUpdate(objeto.id)" novalidate #f="ngForm">
+        <form (ngSubmit)="onUpdate(objeto.id)" novalidate #f="ngForm" *ngIf="objeto">
             <div class="form-group">
                 <label for="carrera">Carrera</label>
                 <input type="text" class="form-control" 

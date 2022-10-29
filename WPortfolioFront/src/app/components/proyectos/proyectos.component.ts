@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Proyectos } from 'src/app/models/proyectos';
+import { ImageService } from 'src/app/services/image.service';
 import { ProyectosService } from 'src/app/services/proyectos.service';
 import { TokenService } from 'src/app/services/token.service';
 
@@ -25,13 +26,14 @@ export class ProyectosComponent implements OnInit {
   isLogged = false;
 
   constructor(
-    private ComService: ProyectosService, 
+    private SerComponent: ProyectosService, 
     private SerToken: TokenService,
-    private ModalService: NgbModal
+    private SerModal: NgbModal,
+    public SerImagen: ImageService
   ) { }
 
   ngOnInit(): void {
-    this.onLoad();
+    this.onLoad()
     if(this.SerToken.getToken()) {
       this.isLogged = true;
     } else {
@@ -40,7 +42,7 @@ export class ProyectosComponent implements OnInit {
   }
 
   onLoad(): void {
-    this.ComService.lista().subscribe(
+    this.SerComponent.lista().subscribe(
       data => {
         this.arreglo = data
       }
@@ -54,15 +56,15 @@ export class ProyectosComponent implements OnInit {
     this.imagen = null;
   }
 
-  onLocate(id: number, referencia: any) {
-    this.ComService.detail(id).subscribe(
+  onLocate(id: number, guia: any): void {
+    this.SerComponent.detail(id).subscribe(
       data => {
         this.objeto = data
       }, err => {
         alert("Error de sistema")
       }
     )
-    this.ModalService.open(referencia)
+    this.SerModal.open(guia)
   }
 
   onCreate(): void {
@@ -72,7 +74,7 @@ export class ProyectosComponent implements OnInit {
       this.enlace,
       this.imagen
     );
-    this.ComService.save(proyectos).subscribe(
+    this.SerComponent.save(proyectos).subscribe(
       data => {
         this.onLoad()
         this.onReset()
@@ -84,7 +86,8 @@ export class ProyectosComponent implements OnInit {
   }
 
   onUpdate(id: number): void {
-    this.ComService.update(id, this.objeto).subscribe(
+    this.objeto.imagen = this.SerImagen.url;
+    this.SerComponent.update(id, this.objeto).subscribe(
       data => {
         this.onLoad()
         alert("Registro actualizado en: Proyectos")
@@ -94,20 +97,27 @@ export class ProyectosComponent implements OnInit {
     );
   }
 
-  onDelete(id: number) {
+  onDelete(id: number): void {
     if(id != undefined) {
-      this.ComService.delete(id).subscribe(
-        data => {
-          this.onLoad()
-          alert("Registro eliminado en: Proyectos")
-        }, err => {
-          alert("Error de sistema al borrar: Proyectos")
-        }
-      );
+      if(window.confirm("¿Desea borrar el registro?")) {
+        this.SerComponent.delete(id).subscribe(
+          data => {
+            this.onLoad()
+            alert("Registro eliminado en: Proyectos")
+          }, err => {
+            alert("Error de sistema al borrar: Proyectos")
+          }
+        );
+      }  
     }
   }
 
-  openModal(referencia: any) {
-    this.ModalService.open(referencia)
+  onModal(guia: any): void {
+    this.SerModal.open(guia)
+  }
+
+  onImage($event: any): void {
+    const archivo = $event.target.files[0];
+    this.SerImagen.uploadImage($event, archivo.name); 
   }
 }

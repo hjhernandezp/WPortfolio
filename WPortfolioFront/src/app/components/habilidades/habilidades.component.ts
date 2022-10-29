@@ -23,9 +23,9 @@ export class HabilidadesComponent implements OnInit {
   isLogged = false;
 
   constructor(
-    private ComService: HabilidadesService, 
+    private SerComponent: HabilidadesService, 
     private SerToken: TokenService,
-    private ModalService: NgbModal
+    private SerModal: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -38,7 +38,7 @@ export class HabilidadesComponent implements OnInit {
   }
 
   onLoad(): void {
-    this.ComService.lista().subscribe(
+    this.SerComponent.lista().subscribe(
       data => {
         this.arreglo = data
       }
@@ -50,15 +50,15 @@ export class HabilidadesComponent implements OnInit {
     this.nivel = null;
   }
 
-  onLocate(id: number, referencia: any) {
-    this.ComService.detail(id).subscribe(
+  onLocate(id: number, guia: any): void {
+    this.SerComponent.detail(id).subscribe(
       data => {
         this.objeto = data
       }, err => {
         alert("Error de sistema")
       }
     )
-    this.ModalService.open(referencia)
+    this.SerModal.open(guia)
   }
   
   onCreate(): void {
@@ -66,7 +66,7 @@ export class HabilidadesComponent implements OnInit {
       this.nombre, 
       this.nivel
     );
-    this.ComService.save(habilidades).subscribe(
+    this.SerComponent.save(habilidades).subscribe(
       data => {
         this.onLoad()
         this.onReset()
@@ -78,7 +78,7 @@ export class HabilidadesComponent implements OnInit {
   }
 
   onUpdate(id: number): void {
-    this.ComService.update(id, this.objeto).subscribe(
+    this.SerComponent.update(id, this.objeto).subscribe(
       data => {
         this.onLoad()
         alert("Registro actualizado en: Habilidades")
@@ -88,20 +88,22 @@ export class HabilidadesComponent implements OnInit {
     );
   }
 
-  onDelete(id: number) {
+  onDelete(id: number): void {
     if(id != undefined) {
-      this.ComService.delete(id).subscribe(
-        data => {
-          this.onLoad()
-          alert("Registro eliminado en: Habilidades")
-        }, err => {
-          alert("Error de sistema al borrar: Habilidades")
-        }
-      );
+      if(window.confirm("¿Desea borrar el registro?")) {
+        this.SerComponent.delete(id).subscribe(
+          data => {
+            this.onLoad()
+            alert("Registro eliminado en: Habilidades")
+          }, err => {
+            alert("Error de sistema al borrar: Habilidades")
+          }
+        );
+      }
     }
   }
 
-  openModal(referencia: any) {
-    this.ModalService.open(referencia)
+  onModal(guia: any): void {
+    this.SerModal.open(guia)
   }
 }

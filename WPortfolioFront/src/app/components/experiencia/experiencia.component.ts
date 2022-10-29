@@ -24,9 +24,9 @@ export class ExperienciaComponent implements OnInit {
   isLogged = false;
 
   constructor(
-    private ComService: ExperienciaService, 
+    private SerComponent: ExperienciaService, 
     private SerToken: TokenService,
-    private ModalService: NgbModal
+    private SerModal: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -39,7 +39,7 @@ export class ExperienciaComponent implements OnInit {
   }
 
   onLoad(): void {
-    this.ComService.lista().subscribe(
+    this.SerComponent.lista().subscribe(
       data => {
         this.arreglo = data
       }
@@ -52,15 +52,15 @@ export class ExperienciaComponent implements OnInit {
     this.cargo = null;
   }
 
-  onLocate(id: number, referencia: any) {
-    this.ComService.detail(id).subscribe(
+  onLocate(id: number, guia: any): void {
+    this.SerComponent.detail(id).subscribe(
       data => {
         this.objeto = data
       }, err => {
         alert("Error de sistema")
       }
     )
-    this.ModalService.open(referencia)
+    this.SerModal.open(guia)
   }
 
   onCreate(): void {
@@ -69,7 +69,7 @@ export class ExperienciaComponent implements OnInit {
       this.lugar,
       this.cargo
     );
-    this.ComService.save(experiencia).subscribe(
+    this.SerComponent.save(experiencia).subscribe(
       data => {
         this.onLoad()
         this.onReset()
@@ -81,7 +81,7 @@ export class ExperienciaComponent implements OnInit {
   }
 
   onUpdate(id: number): void {
-    this.ComService.update(id, this.objeto).subscribe(
+    this.SerComponent.update(id, this.objeto).subscribe(
       data => {
         this.onLoad()
         alert("Registro actualizado en: Experiencia")
@@ -91,20 +91,22 @@ export class ExperienciaComponent implements OnInit {
     );
   }
 
-  onDelete(id: number) {
+  onDelete(id: number): void {
     if(id != undefined) {
-      this.ComService.delete(id).subscribe(
-        data => {
-          this.onLoad()
-          alert("Registro eliminado en: Experiencia")
-        }, err => {
-          alert("Error de sistema al borrar: Experiencia")
-        }
-      );
+      if(window.confirm("¿Desea borrar el registro?")) {
+        this.SerComponent.delete(id).subscribe(
+          data => {
+            this.onLoad()
+            alert("Registro eliminado en: Experiencia")
+          }, err => {
+            alert("Error de sistema al borrar: Experiencia")
+          }
+        );
+      }
     }
   }
 
-  openModal(referencia: any) {
-    this.ModalService.open(referencia)
+  onModal(guia: any): void {
+    this.SerModal.open(guia)
   }
 }

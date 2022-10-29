@@ -1,9 +1,9 @@
 <!-- Cuerpo Princpal -->
-<div>
+<div class="container-fluid table-responsive">
     <h3>
         Proyectos Desarrollados
         <button type="button" class="btn btn-dark" 
-            (click)="openModal(Add)" *ngIf="isLogged">
+            (click)="onModal(Add)" *ngIf="isLogged">
             <i class="bi bi-plus-circle"></i>
         </button>
     </h3>
@@ -13,15 +13,18 @@
                 <th>Nombre</th>
                 <th>Descripción</th>
                 <th>Enlace</th>
-                <th>Imagen</th>
-                <th>---</th>
-                <th>---</th>
+                <!-- <th>Imagen</th> -->
+                <th *ngIf="isLogged">---</th>
+                <th *ngIf="isLogged">---</th>
             </tr>
             <tr *ngFor="let campo of arreglo">
                 <td>{{campo.nombre}}</td>
                 <td>{{campo.descripcion}}</td>
                 <td>{{campo.enlace}}</td>
-                <td>{{campo.imagen}}</td>
+                <!-- <td>
+                    <img class="mx-auto d-block" 
+                    src={{campo.imagen}} img="img-fluid" width="80px">
+                </td> -->
                 <td *ngIf="isLogged">
                     <button type="button" class="btn btn-success" 
                         (click)="onLocate(campo.id, Mod)">
@@ -59,9 +62,10 @@
             <p></p>
             <div class="form-group">
                 <label for="descripcion">Descripción</label>
-                <input type="text" class="form-control" 
+                <textarea type="textarea" class="form-control" 
                     id="descripcion" name="descripcion" 
-                    [(ngModel)]="descripcion" required />
+                    [(ngModel)]="descripcion" rows="3">
+                </textarea>
             </div>
             <p></p>
             <div class="form-group">
@@ -71,13 +75,19 @@
                     [(ngModel)]="enlace" />
             </div>
             <p></p>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="imagen">Imagen</label>
-                <input type="text" class="form-control" 
+                <input type="file" class="form-control" 
                     id="imagen" name="imagen" 
-                    [(ngModel)]="imagen" />
+                    [(ngModel)]="imagen"
+                    (change)="onImage($event)"
+                    accept=".png, .jpg, .jpeg" />
             </div>
             <p></p>
+            <div *ngIf="imagen">
+                <img [src]="SerImagen.url" alt="" width="100px">
+            </div>
+            <p></p> -->
             <button type="submit" class="btn btn-success" 
                 (click)="modal.close()">Añadir
             </button>
@@ -88,14 +98,14 @@
 <!-- Modificar Registro -->
 <ng-template #Mod let-modal>
     <div class="modal-header">
-        <h4 class="modal-title">Editar Proeyctos</h4>     
+        <h4 class="modal-title">Editar Proyectos</h4>     
         <button type="button" class="close" aria-label="close" 
             (click)="modal.dismiss()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
-        <form (ngSubmit)="onUpdate(objeto.id)" novalidate #f="ngForm">
+        <form (ngSubmit)="onUpdate(objeto.id)" novalidate #f="ngForm" *ngIf="objeto">
             <div class="form-group">
                 <label for="nombre">Nombre</label>
                 <input type="text" class="form-control" 
@@ -105,9 +115,10 @@
             <p></p>
             <div class="form-group">
                 <label for="descripcion">Descripción</label>
-                <input type="text" class="form-control" 
+                <textarea type="textarea" class="form-control" 
                     id="descripcion" name="descripcion" 
-                    [(ngModel)]="objeto.descripcion" required />
+                    [(ngModel)]="objeto.descripcion" rows="3">
+                </textarea>
             </div>
             <p></p>
             <div class="form-group">
@@ -117,13 +128,19 @@
                     [(ngModel)]="objeto.enlace" />
             </div>
             <p></p>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="imagen">Imagen</label>
-                <input type="text" class="form-control" 
+                <input type="file" class="form-control" 
                     id="imagen" name="imagen" 
-                    [(ngModel)]="objeto.imagen" />
+                    [(ngModel)]="objeto.imagen" 
+                    (change)="onImage($event)"
+                    accept=".png, .jpg, .jpeg" />
             </div>
             <p></p>
+            <div *ngIf="objeto.imagen">
+                <img [src]="SerImagen.url" alt="" width="100px">
+            </div>
+            <p></p> -->
             <button type="submit" class="btn btn-success" 
                 (click)="modal.close()">Actualizar
             </button>

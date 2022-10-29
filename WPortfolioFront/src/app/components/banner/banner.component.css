@@ -18,3 +18,9 @@ h1 {
     border-bottom-width: 1px;
     border-bottom-color: white;
 }
+
+@media (max-width: 575px) {
+    #SeccionTitulo{
+        text-align: center;
+    }
+}
